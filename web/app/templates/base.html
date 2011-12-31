@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <link rel="stylesheet" type="text/css" href="/static/css/base.css" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Flaskeleton</title>
+        <link rel="shortcut icon" href="/static/favicon.ico" />
+        <meta name="robots" content="index, follow" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="author" content="" />
+        <meta name="generator" content="Flask" />
+    </head>
+    <body>
+        <div id="page">
+            <div id="top"></div>
+            <div id="middle">
+                {% block content %}{% endblock %}
+            </div>
+            <div id="bottom"></div>
+        </div>
+        {% if not config.DEBUG %}
+        <!-- Piwik --><!-- End Piwik Tag -->
+        {% endif %}
+    </body>
+</html>
