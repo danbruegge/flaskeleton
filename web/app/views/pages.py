@@ -12,4 +12,8 @@ def show(page):
     context = {}
     context['page'] = page
 
-    return render_template('{0}.html'.format(page), c=context)
+    try:
+        return render_template('{0}.html'.format(page), c=context)
+    except TemplateNotFound:
+        context['title'] = 'Seite nicht gefunden'
+        return render_template('404.html', c=context)
