@@ -1,9 +1,15 @@
 import sys, os
 
-activate_this = '/.../bin/activate_this.py'
+ROOT_PATH = '/<PATH>/bin/activate_this.py'
+ENV_PATH = ROOT_PATH + '/bin/activate_this.py'
+WSGI_PATH = ROOT_PATH + '/project/web'
+
+activate_this = ENV_PATH
 execfile(activate_this, dict(__file__=activate_this))
 
-sys.path = [os.path.dirname(__file__)] + sys.path
+if WSGI_PATH not in sys.path:
+    sys.path = [WSGI_PATH] + sys.path
+
 os.chdir(os.path.dirname(__file__))
 
 sys.stdout = sys.stderr

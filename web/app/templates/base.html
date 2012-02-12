@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="de">
     <head>
-        <link rel="stylesheet" type="text/css" href="/static/css/base.css" />
+        {% assets filter="cssmin", output="css/packed.css",
+            "css/base.css" %}
+            <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}" />
+        {% endassets %}
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Flaskeleton</title>
         <link rel="shortcut icon" href="/static/favicon.ico" />
