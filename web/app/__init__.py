@@ -28,16 +28,17 @@ def create_app(config_object):
     def connect_db():
         g.db = db
 
-    from app.views import install
-    app.register_blueprint(install.bp)
+    from app.views import add_blueprints
+    add_blueprints(app)
 
     @app.errorhandler(404)
     def page_not_found(e):
-        return render_template('404.html', c={'title':'Seite nicht gefunden'})
+        return render_template('404.html', **{'title':'Seite nicht gefunden'})
 
-    @app.route('/robots.txt')
-    def robots_txt():
-        return app.send_static_file('robots.txt')
+    @app.route('/<path:filename>')
+    def static_root():
+        if filename in ['robots.txt', 'favicon.ico', 'apple-touch-icon.png']:
+            return app.send_static_file(filename)
 
     @app.route('/media/<path:filename>')
     def media(filename):

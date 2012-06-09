@@ -1,29 +1,40 @@
 <!DOCTYPE html>
-<html lang="de">
-    <head>
-        {% assets filter="cssmin", output="css/packed.css",
-            "css/base.css" %}
-            <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}" />
-        {% endassets %}
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>Flaskeleton</title>
-        <link rel="shortcut icon" href="/static/favicon.ico" />
-        <meta name="robots" content="index, follow" />
-        <meta name="description" content="" />
-        <meta name="keywords" content="" />
-        <meta name="author" content="" />
-        <meta name="generator" content="Flask" />
-    </head>
-    <body>
-        <div id="page">
-            <div id="top"></div>
-            <div id="middle">
-                {% block content %}{% endblock %}
-            </div>
-            <div id="bottom"></div>
-        </div>
-        {% if not config.DEBUG %}
-        <!-- Piwik --><!-- End Piwik Tag -->
-        {% endif %}
-    </body>
+<!--[if lt IE 7 ]> <html lang="de" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="de" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="de" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="de" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="de" class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Flaskeleton</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% assets filter="cssmin", output="css/packed.css",
+        "css/general.css",
+        "css/base.css",
+        "css/forms.css"
+    %}
+        <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}" />
+    {% endassets %}
+    <script src="/static/js/lib/modernizr.js"></script>
+    <meta name="generator" content="Flask" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+</head>
+<body>
+    <section id="wrapper">
+        <header></header>
+        <section id="page">
+            {% block content %}{% endblock %}
+        </section>
+        <footer></footer>
+    </section>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/static/js/lib/jquery-1.7.2.min.js"><\/script>')</script>
+    <script src="/static/js/base.js"></script>
+    {% if not config.DEBUG %}
+    <!-- Piwik --><!-- End Piwik Tag -->
+    {% endif %}
+</body>
 </html>
