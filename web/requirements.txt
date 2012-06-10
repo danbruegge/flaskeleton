@@ -1,5 +1,6 @@
 Flask==0.8
 Flask-Assets==0.6.2
+Flask-PyMongo==0.1.1
 Flask-WTF==0.6
 cssmin==0.1.4
 jsmin==2.0.2

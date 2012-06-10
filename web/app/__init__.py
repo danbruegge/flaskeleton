@@ -2,9 +2,11 @@
 
 from flask import Flask, g, send_file, render_template
 from flaskext.assets import Environment, Bundle
+from flask.ext.pymongo import PyMongo
 from app import settings
 
 assets = Environment()
+mongo = PyMongo()
 
 def create_app(config_object):
     app = Flask(__name__)
@@ -23,10 +25,11 @@ def create_app(config_object):
         app.logger.addHandler(mail_handler)
 
     assets.init_app(app)
+    mongo.init_app(app)
 
     @app.before_request
     def connect_db():
-        g.db = db
+        g.db = mongo
 
     from app.views import add_blueprints
     add_blueprints(app)
