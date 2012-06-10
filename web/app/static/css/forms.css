@@ -38,6 +38,4 @@ fieldset {
             color: #333;
         }
 
-        input.button {
-            width: 100px !important;
-        }
+        input.button { width: 100px !important; }
