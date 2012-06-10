@@ -32,7 +32,11 @@
     </section>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="/static/js/lib/jquery-1.7.2.min.js"><\/script>')</script>
-    <script src="/static/js/base.js"></script>
+    {% assets filter="jsmin", output="js/packed.js",
+        "js/base.js"
+    %}
+        <script src="{{ ASSET_URL }}"></script>
+    {% endassets %}
     {% if not config.DEBUG %}
     <!-- Piwik --><!-- End Piwik Tag -->
     {% endif %}
