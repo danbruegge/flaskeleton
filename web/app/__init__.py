@@ -19,7 +19,7 @@ def create_app(config_object):
             app.config['ERROR_MAIL']['smtp'],
             app.config['ERROR_MAIL']['to'],
             app.config['ERROR_MAIL']['from'],
-            app.config['ERROR_MAIL']['title']
+            app.config['ERROR_MAIL']['subject']
         )
         mail_handler.setLevel(logging.ERROR)
         app.logger.addHandler(mail_handler)
