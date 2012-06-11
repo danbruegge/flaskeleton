@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Seite löschen{% endblock %}
+
+{% block content_title %}Seite löschen{% endblock %}
+
+{% block content %}
+<div>
+    {% if c.success %}
+    <div class="success">
+        <p>Seite wurde erfolgreich gelöscht.</p>
+        <p><a href="/">ZURÜCK</a></p>
+    </div>
+    {% elif not c.success %}
+    <div class="error">
+        <p>Irgendwas lief schief beim Löschen.</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

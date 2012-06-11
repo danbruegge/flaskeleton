@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% import 'utils/macros.html' as macros %}
+{% import 'page_macros.html' as page_macros %}
+
+{% block title %}Seite hinzufügen{% endblock %}
+
+{% block content_title %}Seite hinzufügen{% endblock %}
+
+{% block content %}
+<div class="form">
+    {% if success %}
+    <div class="success">
+        <p>Seite wurde erfolgreich erstellt.</p>
+    </div>
+    {% elif link_not_unique %}
+        {{ page_macros.id_not_unique() }}
+    {% else %}
+        {{ macros.render(form, '.') }}
+    {% endif %}
+</div>
+{% endblock %}

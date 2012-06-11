@@ -1,0 +1,15 @@
+{% for i in g.db.db.pages.find().sort('order') %}
+    {% if i.visibility or session['user'] %}
+    <li {% if loop.first %} class="first"{% endif %}>
+        {% set url = i.slug %}
+        {% if 'http://' not in i.slug %}
+            {% set url = '/' + i.slug + '/' %}
+        {% endif %}
+        <a href="{{ url }}" class="
+            {{ 'active'|safe if request.path == '/%s/'|format(i.slug) }}
+            {{ 'red'|safe if not i.visibility }}
+        "
+        >{{ i.title }}</a>
+    </li>
+    {% endif %}
+{% endfor %}

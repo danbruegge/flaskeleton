@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}{{ c.data.title }}{% endblock %}
+
+{% block content_title %}{{ c.data.title }}{% endblock %}
+
+{% block content %}
+    <div class="entry">
+        {% if 'user' in session %}
+        <div class="admin-edit">
+            <ul>
+                <li><a href="/page/admin/edit/{{ c.data.id }}">Seite ändern</a></li>
+                <li><a href="/page/admin/del/{{ c.data.id }}">Seite löschen</a></li>
+            </ul>
+        </div>
+        {% endif %}
+        <div>
+            {{ c.data.text|markdown }}
+        </div>
+    </div>
+{% endblock %}

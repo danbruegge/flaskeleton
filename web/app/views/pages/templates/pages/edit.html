@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% import 'macros.html' as macros %}
+{% import 'page_macros.html' as page_macros %}
+
+{% block title %}Seite bearbeiten{% endblock %}
+
+{% block content_title %}Seite bearbeiten{% endblock %}
+
+{% block content %}
+<div class="form">
+    {% set form = c.form %}
+    {% if c.success %}
+    <div class="success">
+        <p>Seite wurde erfolgreich geändert.</p>
+    </div>
+    {% elif c.link_not_unique %}
+        {{ page_macros.id_not_unique() }}
+    {% else %}
+        {{ macros.show_form(form, '/page/admin/edit/' + c.id) }}
+    {% endif %}
+</div>
+{% endblock %}

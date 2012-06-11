@@ -38,13 +38,7 @@ def create_app(config_object):
     def page_not_found(e):
         return render_template('404.html', **{'title':'Seite nicht gefunden'})
 
-    @app.route('/<path:filename>')
-    def static_root():
-        if filename in ['robots.txt', 'favicon.ico', 'apple-touch-icon.png']:
-            return app.send_static_file(filename)
-
-    @app.route('/media/<path:filename>')
-    def media(filename):
-        return send_file('media/{0}'.format(filename))
+    app.add_url_rule('/<path:filename>', endpoint='static', view_func=app.send_static_file)
+    app.add_url_rule('/media/<path:filename>', endpoint='media', view_func=send_file)
 
     return app
