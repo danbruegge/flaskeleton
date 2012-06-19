@@ -1,6 +1,5 @@
 {% extends "base.html" %}
-{% import 'macros.html' as macros %}
-{% import 'page_macros.html' as page_macros %}
+{% import 'utils/macros.html' as macros %}
 
 {% block title %}Seite bearbeiten{% endblock %}
 
@@ -8,15 +7,18 @@
 
 {% block content %}
 <div class="form">
-    {% set form = c.form %}
-    {% if c.success %}
+    {% if success %}
     <div class="success">
         <p>Seite wurde erfolgreich geändert.</p>
     </div>
-    {% elif c.link_not_unique %}
-        {{ page_macros.id_not_unique() }}
+    {% elif link_not_unique %}
+        <div class="error">
+            <p>
+                Eine ähnliche Seite existiert bereits. Bitte ändern.
+            </p>
+        </div>
     {% else %}
-        {{ macros.show_form(form, '/page/admin/edit/' + c.id) }}
+        {{ macros.render(form, '.' + page.slug) }}
     {% endif %}
 </div>
 {% endblock %}
