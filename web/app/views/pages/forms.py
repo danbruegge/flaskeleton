@@ -1,20 +1,20 @@
 # -*- coding: utf-8 -*-
 
 import datetime
-from flaskext.wtf import Form, Required, BooleanField, IntegerField, \
-    TextField, TextAreaField, DateTimeField, FormField, ListWidget
+from flaskext.wtf import Form, Required, Optional, BooleanField, \
+    IntegerField, TextField, TextAreaField
 
 class BaseForm(Form):
-    author = TextField('Autor', validators=[Required()])
-    in_menu = BooleanField(u'in Menü')
-    visibility = BooleanField('Sichtbarkeit')
-    order = IntegerField('Sortierung', default=0)
-    created = DateTimeField(default=datetime.datetime.now)
-    modified = DateTimeField(u'Zuletzt geändert', default=datetime.datetime.now)
+    author = TextField(validators=[Required()])
+    in_menu = BooleanField(validators=[Optional()])
+    visibility = BooleanField()
+    order = IntegerField(default=0)
+    created = TextField(default=datetime.datetime.now)
+    modified = TextField(default=datetime.datetime.now)
 
 
 class PageForm(BaseForm):
-    title = TextField('Titel', validators=[Required()])
+    title = TextField(validators=[Required()])
     slug = TextField(validators=[Required()])
     teaser = TextAreaField()
     text = TextAreaField(validators=[Required()])

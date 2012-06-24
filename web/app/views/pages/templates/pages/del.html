@@ -1,20 +1,20 @@
-{% extends "base.html" %}
+{% extends "admin/base.html" %}
 
-{% block title %}Seite löschen{% endblock %}
+{% block title %}Delete page{% endblock %}
 
-{% block content_title %}Seite löschen{% endblock %}
+{% block content_title %}Delete page{% endblock %}
 
 {% block content %}
 <div>
-    {% if c.success %}
+    {% if success %}
     <div class="success">
-        <p>Seite wurde erfolgreich gelöscht.</p>
-        <p><a href="/">ZURÜCK</a></p>
-    </div>
-    {% elif not c.success %}
+        <p>Page has been successfully deleted.</p>
+        <p><a href="/admin/pages/">&laquo; BACK</a></p>
+    </div><!-- /.success -->
+    {% elif not success %}
     <div class="error">
-        <p>Irgendwas lief schief beim Löschen.</p>
-    </div>
+        <p>Some unknown error occurred.</p>
+    </div><!-- /.error -->
     {% endif %}
 </div>
 {% endblock %}

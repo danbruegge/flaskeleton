@@ -1,0 +1,22 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Seiten{% endblock %}
+
+{% block content_title %}Seiten{% endblock %}
+
+{% block content %}
+<div id="pages">
+    <p>
+        <a href="/admin/pages/add/" class="edit">+add</a>
+    </p>
+    <ul class="list">
+        {% for page in pages %}
+        <li class="item">
+            <a href="/admin/pages/{{ page.slug }}" class="edit">{{ page.title }}</a>
+            |
+            <a href="/admin/pages/delete/{{ page.slug }}" class="delete">delete</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

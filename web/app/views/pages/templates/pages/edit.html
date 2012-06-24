@@ -1,24 +1,23 @@
-{% extends "base.html" %}
+{% extends "admin/base.html" %}
 {% import 'utils/macros.html' as macros %}
 
-{% block title %}Seite bearbeiten{% endblock %}
+{% block title %}Edit page{% endblock %}
 
-{% block content_title %}Seite bearbeiten{% endblock %}
+{% block content_title %}Edit page{% endblock %}
 
 {% block content %}
 <div class="form">
     {% if success %}
     <div class="success">
-        <p>Seite wurde erfolgreich geändert.</p>
-    </div>
+        <p>Page was edited successfully.</p>
+        <p><a href="/admin/pages/">&laquo; BACK</a></p>
+    </div><!-- /.success -->
     {% elif link_not_unique %}
-        <div class="error">
-            <p>
-                Eine ähnliche Seite existiert bereits. Bitte ändern.
-            </p>
-        </div>
+    <div class="error">
+        <p>A similar page already exists. Please change.</p>
+    </div><!-- /.error -->
     {% else %}
-        {{ macros.render(form, '.' + page.slug) }}
+        {{ macros.render(form, request.path) }}
     {% endif %}
-</div>
+</div><!-- /.form -->
 {% endblock %}

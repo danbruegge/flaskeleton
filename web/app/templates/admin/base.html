@@ -13,7 +13,8 @@
     {% assets filter="cssmin", output="css/packed.css",
         "css/general.css",
         "css/base.css",
-        "css/forms.css"
+        "css/forms.css",
+        "css/admin/base.css"
     %}
         <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}" />
     {% endassets %}
@@ -24,7 +25,12 @@
 </head>
 <body>
     <section id="wrapper">
-        <header></header>
+        <header>
+            <h1>Admin Area</h1>
+            <nav>
+                <a href="/admin/pages/">Pages</a>
+            </nav>
+        </header>
         <section id="page">
             <h1>{% block content_title %}{% endblock %}</h1>
             {% block content %}{% endblock %}

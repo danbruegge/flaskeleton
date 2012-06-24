@@ -66,6 +66,8 @@ a > img { border: none }
 
 .success-color { color: #3c0 }
 
+.none { display: none }
+
 .margin-top5 { margin: 5px 0 0 }
 
 .form-error-border { border: 1px solid red !important }

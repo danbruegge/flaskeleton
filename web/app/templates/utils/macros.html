@@ -20,31 +20,31 @@
                 {% for error in field.errors %}
                 <li>{{ error }}</li>
                 {% endfor %}
-            </ul>
-        </li>
+            </ul><!-- /.error-msg -->
+        </li><!-- /.error-color -->
         {% endif %}
     {% endfor %}
         <li>
-            <input type="submit" value="Absenden" class="button" />
+            <input type="submit" value="Send" class="button" />
         </li>
     </ul>
 </form>
 {% endmacro %}
 
 {% macro render_field(field, form) %}
-{% if not field.short_name in form.exclude %}
-<li>
+<li{% if field.short_name in form.exclude %} class="none"{% endif %}>
     {{ field.label }}{% if field.flags.required %}*{% endif %}:
 
     {% if field.errors %}
         {{ field(class="form-error") }}
     {% else %}
         {% if field.id in form._editor %}
-            {{ field(class='markItUp') }}
+            {{ field(class="markItUp") }}
+        {% elif field.type == "BooleanField" %}
+            {{ field }}
         {% else %}
             {{ field }}
         {% endif %}
     {% endif %}
 </li>
-{% endif %}
 {% endmacro %}
