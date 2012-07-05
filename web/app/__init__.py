@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from flask import Flask, g, send_file, render_template
+from flask import Flask, g, send_file, render_template, url_for
 from flaskext.assets import Environment, Bundle
 from flask.ext.pymongo import PyMongo
 from app import settings
@@ -32,7 +32,7 @@ def create_app(config_object):
         g.db = mongo
 
     from app.views import add_blueprints
-    add_blueprints(app)
+    app = add_blueprints(app)
 
     @app.errorhandler(404)
     def page_not_found(e):

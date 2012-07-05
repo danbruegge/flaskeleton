@@ -14,10 +14,14 @@
         "css/general.css",
         "css/base.css",
         "css/forms.css",
-        "css/admin/base.css"
+        "css/admin/base.css",
+        "style.css"
     %}
-        <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}" />
+    <link rel="stylesheet" href="{{ ASSET_URL }}" />
     {% endassets %}
+
+    <link rel="stylesheet" href="{{ url_for('pages.static', filename='style.css') }}" />
+
     <script src="/static/js/lib/modernizr.js"></script>
     <meta name="generator" content="Flask" />
     <link rel="shortcut icon" href="/favicon.ico" />

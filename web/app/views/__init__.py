@@ -6,3 +6,5 @@ def add_blueprints(app):
     for module in app.config['BLUEPRINTS']:
         bp = import_string('app.views.' + module + '.bp')
         app.register_blueprint(bp)
+
+    return app
