@@ -10,8 +10,8 @@ bp = Blueprint(
     'pages',
     __name__,
     template_folder='templates',
-    static_folder='static',
-    url_prefix=PAGES['prefix']
+    static_url_path='/static',
+    static_folder='/views/pages/static'
 )
 
 # =============================================================================
@@ -33,6 +33,9 @@ def add():
     context = {}
     context['form'] = form = PageForm()
     form.author.data = 'Ich'
+
+    print dir(bp)
+    print bp._static_folder
 
     if form.validate_on_submit():
         pages = g.db.db.pages
@@ -73,6 +76,6 @@ def delete(page_slug):
 # =============================================================================
 bp.add_url_rule(PAGES['prefix'] + 'delete/<page_slug>/', methods=('GET', 'POST'), view_func=delete)
 bp.add_url_rule(PAGES['prefix'] + '<page_slug>/', methods=('GET', 'POST'), view_func=   edit)
-bp.add_url_rule('add/', methods=('GET', 'POST'), view_func=add)
+bp.add_url_rule(PAGES['prefix'] + 'add/', methods=('GET', 'POST'), view_func=add)
 bp.add_url_rule(PAGES['prefix'], view_func=list)
 bp.add_url_rule('/<page_slug>/', view_func=show)

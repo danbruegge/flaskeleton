@@ -9,7 +9,9 @@ assets = Environment()
 mongo = PyMongo()
 
 def create_app(config_object):
-    app = Flask(__name__)
+    app = Flask(
+        __name__
+    )
     app.config.from_object(config_object)
 
     if not app.debug:
