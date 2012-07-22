@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from flask import Flask, g, send_file, render_template, url_for
-from flaskext.assets import Environment, Bundle
+from flask import Flask, g, send_file, render_template
+from flask.ext.assets import Environment, Bundle
 from flask.ext.pymongo import PyMongo
 from app import settings
 
@@ -26,15 +26,28 @@ def create_app(config_object):
         mail_handler.setLevel(logging.ERROR)
         app.logger.addHandler(mail_handler)
 
-    assets.init_app(app)
     mongo.init_app(app)
-
     @app.before_request
     def connect_db():
         g.db = mongo
 
+    assets.init_app(app)
+    css = Bundle(
+        'css/general.css',
+        'css/base.css',
+        'css/forms.css',
+        'css/admin/style.css',
+        filters='cssmin',
+        output='css/packed.css'
+    )
+    assets.register('css_all', css)
+
     from app.views import add_blueprints
     app = add_blueprints(app)
+
+    @app.before_request
+    def get_admin_prints():
+        g.admin_blueprints = [key for key in app.blueprints if 'admin_' in key]
 
     @app.errorhandler(404)
     def page_not_found(e):

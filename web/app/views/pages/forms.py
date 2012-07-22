@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import datetime
-from flaskext.wtf import Form, Required, Optional, BooleanField, \
+from flask.ext.wtf import Form, Required, Optional, BooleanField, \
     IntegerField, TextField, TextAreaField
 
 class BaseForm(Form):

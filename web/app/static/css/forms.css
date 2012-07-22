@@ -38,4 +38,5 @@ fieldset {
             color: #333;
         }
 
+        /* try to avoid the "!important" */
         input.button { width: 100px !important; }

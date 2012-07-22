@@ -24,12 +24,23 @@
 </head>
 <body>
     <section id="wrapper">
-        <header></header>
+
+        <header id="header">
+            <nav>
+                <ul id="navigation">
+                    <li></li>
+                </ul><!-- /#navigation -->
+            </nav>
+        </header><!-- /#header -->
+
         <section id="page">
-            <h1>{% block content_title %}{% endblock %}</h1>
             {% block content %}{% endblock %}
         </section><!-- /#page -->
-        <footer></footer>
+
+        <footer id="footer">
+
+        </footer><!-- /#footer -->
+
     </section><!-- /#wrapper -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="/static/js/lib/jquery-1.7.2.min.js"><\/script>')</script>

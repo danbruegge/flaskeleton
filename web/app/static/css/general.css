@@ -8,33 +8,40 @@
 
 /* RESET/NORMALIZE START *****************************************************/
 
-html, body {
+html,
+body {
     background-color: #eee;
     color: #333;
     font: normal 12px 'Georgia', serif;
-    height: 100%
+    height: 100%;
 }
 
 h1,
 h2,
-h3 { margin-top: 0 }
+h3 {
+    margin-top: 0;
+}
 
 ul,
-p { line-height: 150% }
+p {
+    line-height: 150%;
+}
 
 blockquote,
 pre {
     border: 1px dashed #ccc;
     margin: 10px 20px;
-    padding: 0 10px
+    padding: 0 10px;
 }
 
-blockquote { background-color: #fff }
+blockquote {
+    background-color: #fff;
+}
 
 pre {
     background-color: #333;
     color: #eee;
-    padding: 10px
+    padding: 10px;
 }
 
 /* RESET/NORMALIZE END *******************************************************/
@@ -42,39 +49,35 @@ pre {
 /* ANCHOR START **************************************************************/
 a {
     color: #5AA0E2;
-    text-decoration: none
+    text-decoration: none;
 }
 
-a:hover { color: #333 }
+a:hover {
+    color: #333;
+}
 
 a > img { border: none }
 
 /* ANCHOR END ****************************************************************/
 
 /* COMMON CLASSES START ******************************************************/
-.error {
-    background-color: #fdd;
-    border: 2px solid #f30
+.error,
+.error-text {
+    color: #f30;
 }
 
-.error-color { color: #f30 }
+.error {
+    background-color: #fdd;
+    border: 2px solid #f30;
+}
 
 .success {
     background-color: #efc;
     border: 2px solid #3c0;
+    color: #3c0;
 }
 
-.success-color { color: #3c0 }
-
-.none { display: none }
-
-.margin-top5 { margin: 5px 0 0 }
-
-.form-error-border { border: 1px solid red !important }
-
-.left { float: left }
-
-.right { float: right }
-
-.red { color: #f00 !important }
+.none {
+    display: none;
+}
 /* COMMON CLASSES END ********************************************************/
