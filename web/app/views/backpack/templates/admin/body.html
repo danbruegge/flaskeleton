@@ -1,21 +1,43 @@
 {% extends "admin/base.html" %}
 {% block body %}
-    <section id="wrapper">
-        <header id="header">
+    <section class="wrapper">
+        <header class="header">
 
-            <h1 id="header_title">Admin Area</h1>
+            <h1 class="header-title">Admin Area</h1>
 
-            {% include 'admin/navigation.html' %}
+            <nav class="nav-header">
+                <ul class="nav-user">
+                    <li>
+                        Username, last-login-date
+                    </li>
+                    <li>
+                        <a href="">Logout</a>
+                    </li>
+                </ul>
+            </nav>
 
         </header> <!-- /#header -->
 
-        <section id="page">
+        <nav class="col col-1 sidebar">
+            <ul class="nav nav-main">
+                {% for bp in g.admin_blueprints %}
+                <li>
+                    {% set name = bp | replace( 'admin_', '' ) %}
+                    <a href="/admin/{{ name }}">
+                        {{ name | capitalize }}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul><!-- /#main-nav -->
+        </nav>
+
+        <section class="col col-4 content">
 
             {% block content %}{% endblock %}
 
         </section><!-- /#page -->
 
-        <footer>
+        <footer class="footer">
 
         </footer>
 

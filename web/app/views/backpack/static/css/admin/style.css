@@ -1,1 +1,49 @@
-#wrapper {}
+@charset "utf-8";
+
+/*** GRADIENTS *** START *****************************************************/
+.gradient-dark-light,
+.header {
+    background-image: -moz-linear-gradient(top, #333, #111); /* Firefox */
+    background-image: -ms-linear-gradient(top, #333, #111); /* IE */
+    background-image: -o-linear-gradient(top, #333, #111); /* Opera */
+    background-image: -webkit-linear-gradient(top, #333, #111); /* Safari, Chrome */
+    background-image: linear-gradient(top, #333, #111); /* W3C Standard */
+}
+
+.gradient-light-dark,
+.sidebar {
+    background-image: -moz-linear-gradient(top, #111, #333); /* Firefox */
+    background-image: -ms-linear-gradient(top, #111, #333); /* IE */
+    background-image: -o-linear-gradient(top, #11, #333); /* Opera */
+    background-image: -webkit-linear-gradient(top, #111, #333); /* Safari, Chrome */
+    background-image: linear-gradient(top, #111, #333); /* W3C Standard */
+}
+/*** GRADIENTS *** END *******************************************************/
+
+.wrapper {
+    height: 100%;
+}
+
+.header {
+    background-color: #333;
+    color: #eee;
+    overflow: hidden;
+    padding: 10px;
+}
+
+    .header-title {
+        float: left;
+    }
+
+    .nav-header {
+        float: right;
+    }
+
+.sidebar {
+    background-color: #111;
+    height: 100%;
+}
+
+.content {
+    float: left;
+}

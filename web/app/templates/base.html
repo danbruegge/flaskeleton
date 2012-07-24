@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% assets filter="cssmin", output="css/packed.css",
         "css/general.css",
-        "css/base.css",
+        url_for('backpack.static', filename='css/general.css'),
         "css/forms.css"
     %}
         <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}" />
@@ -23,21 +23,21 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body>
-    <section id="wrapper">
+    <section class="wrapper">
 
-        <header id="header">
+        <header class="header">
             <nav>
-                <ul id="navigation">
+                <ul class="navigation">
                     <li></li>
                 </ul><!-- /#navigation -->
             </nav>
         </header><!-- /#header -->
 
-        <section id="page">
+        <section class="page">
             {% block content %}{% endblock %}
         </section><!-- /#page -->
 
-        <footer id="footer">
+        <footer class="footer">
 
         </footer><!-- /#footer -->
 
