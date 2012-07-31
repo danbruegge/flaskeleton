@@ -5,20 +5,20 @@
 
             <h1 class="header-title">Admin Area</h1>
 
-            <nav class="nav-header">
-                <ul class="nav-user">
+            <nav class="header-nav">
+                <ul class="nav nav-user">
                     <li>
-                        Username, last-login-date
+                        Username
                     </li>
                     <li>
                         <a href="">Logout</a>
                     </li>
-                </ul>
+                </ul> <!-- /.nav-user -->
             </nav>
 
-        </header> <!-- /#header -->
+        </header>
 
-        <nav class="col col-1 sidebar">
+        <nav class="col-1 sidebar">
             <ul class="nav nav-main">
                 {% for bp in g.admin_blueprints %}
                 <li>
@@ -28,20 +28,20 @@
                     </a>
                 </li>
                 {% endfor %}
-            </ul><!-- /#main-nav -->
+            </ul> <!-- /.nav-main -->
         </nav>
 
-        <section class="col col-4 content">
+        <section class="col-4 col-last content-wrap">
 
-            {% block content %}{% endblock %}
+            <div class="content">
 
-        </section><!-- /#page -->
+                {% block content %}{% endblock %}
 
-        <footer class="footer">
+            </div> <!-- /.content -->
 
-        </footer>
+        </section>
 
-    </section><!-- /#wrapper -->
+    </section><!-- /.wrapper -->
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="/static/js/lib/jquery-1.7.2.min.js"><\/script>')</script>

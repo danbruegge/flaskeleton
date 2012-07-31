@@ -48,7 +48,7 @@ pre {
 
 /* ANCHOR START **************************************************************/
 a {
-    color: #FF9900;
+    color: #f90;
     text-decoration: none;
 }
 
@@ -61,32 +61,43 @@ a > img { border: none }
 /* ANCHOR END ****************************************************************/
 
 /*** GRID *** START **********************************************************/
-.col {
+.col,
+.col-1,
+.col-2,
+.col-3,
+.col-4,
+.col-5,
+.col-6 {
     float: left;
+    margin-right: 10px
+}
+
+.col-last {
+    margin-right: 0;
 }
 
 .col-1 {
-    width: 160px;
+    width: 150px;
 }
 
 .col-2 {
-    width: 320px;
+    width: 310px;
 }
 
 .col-3 {
-    width: 480px;
+    width: 470px;
 }
 
 .col-4 {
-    width: 640px;
+    width: 630px;
 }
 
 .col-5 {
-    width: 800px;
+    width: 790px;
 }
 
 .col-6 {
-    width: 960px;
+    width: 950px;
 }
 /*** GRID *** END ************************************************************/
 
