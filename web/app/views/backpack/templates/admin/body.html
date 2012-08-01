@@ -1,9 +1,12 @@
 {% extends "admin/base.html" %}
 {% block body %}
     <section class="wrapper">
+
         <header class="header">
 
-            <h1 class="header-title">Admin Area</h1>
+            <h1 class="header-title">
+                <a href="/admin">Admin Area</a>
+            </h1>
 
             <nav class="header-nav">
                 <ul class="nav nav-user">
@@ -18,8 +21,11 @@
 
         </header>
 
-        <nav class="col-1 sidebar">
-            <ul class="nav nav-main">
+        {% if request.path != '/admin/' %}
+        <nav class="breadcrumb">
+            {{ request.path|split }}
+
+            <ul class="nav nav-breadcrumb">
                 {% for bp in g.admin_blueprints %}
                 <li>
                     {% set name = bp | replace( 'admin_', '' ) %}
@@ -28,10 +34,11 @@
                     </a>
                 </li>
                 {% endfor %}
-            </ul> <!-- /.nav-main -->
+            </ul> <!-- /.nav-breadcrumb -->
         </nav>
+        {% endif %}
 
-        <section class="col-4 col-last content-wrap">
+        <section class="content-wrap">
 
             <div class="content">
 

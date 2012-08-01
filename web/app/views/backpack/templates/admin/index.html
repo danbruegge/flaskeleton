@@ -5,4 +5,19 @@
 {% block content %}
     <h1>Welcome!</h1>
     <p>Index Page</p>
+    <br />
+    <p>
+        Display here some infos and statistics, like how many documents are in
+        the database and ... blah blah
+    </p>
+    <ul class="list-pages">
+        {% for bp in g.admin_blueprints %}
+        <li>
+            {% set name = bp | replace( 'admin_', '' ) %}
+            <a href="/admin/{{ name }}">
+                {{ name | capitalize }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul> <!-- /.nav-breadcrumb -->
 {% endblock %}
