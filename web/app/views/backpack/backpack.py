@@ -17,9 +17,18 @@ def list_blueprints():
     return render_template('admin/index.html', **context)
 
 #~ add filters
-@bp.app_template_filter('split')
-def split(s, sep='/'):
-    return s.split(sep)
+@bp.app_template_filter('breadcrumb')
+def breadcrumb(s):
+    path = filter( None, s.split('/') )
+
+    breadcrumb = {}
+    crumbs = []
+
+    for i in range(len(path)):
+        crumbs.append( path[i] )
+        breadcrumb[ '/'.join(crumbs) ] = path[i]
+
+    return breadcrumb
 
 #~ define urls
 bp.add_url_rule('', view_func=list_blueprints)

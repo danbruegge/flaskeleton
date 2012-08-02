@@ -23,7 +23,14 @@
 
         {% if request.path != '/admin/' %}
         <nav class="breadcrumb">
-            <p>Path: {{ request.path|split }}</p>
+            <ul>
+            {% set breadcrumb_list = request.path|breadcrumb %}
+            {% for key in breadcrumb_list %}
+                <li>
+                    <a href="/{{ key }}">{{ breadcrumb_list[key] }}</a>
+                </li>
+            {% endfor %}
+            </ul>
 
             <ul class="nav nav-breadcrumb">
                 {% for bp in g.admin_blueprints %}
