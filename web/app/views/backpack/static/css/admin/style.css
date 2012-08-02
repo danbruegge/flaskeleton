@@ -5,7 +5,9 @@
 }
 
 /*** NAVIGATION *** START ****************************************************/
-.nav {}
+.nav {
+    list-style-type: none;
+}
 
     .nav a:hover {
         color: #aaa;
@@ -15,9 +17,7 @@
     float: right;
 }
 
-.nav-user {
-    list-style-type: none;
-}
+.nav-user {}
 
     .nav-user li {
         float: left;
@@ -58,7 +58,16 @@
 
 .breadcrumb {
     border-bottom: 1px dashed #999;
+    overflow: hidden;
 }
+
+    .breadcrumb li {
+        color: #666;
+        float: left;
+        margin: 2px 0 0 5px;
+    }
+
+        .breadcrumb-seperator {}
 
 .content-wrap {
     float: left;

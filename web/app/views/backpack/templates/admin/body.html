@@ -23,24 +23,16 @@
 
         {% if request.path != '/admin/' %}
         <nav class="breadcrumb">
-            <ul>
+            <ul class="nav nav-breadcrumb">
             {% set breadcrumb_list = request.path|breadcrumb %}
             {% for key in breadcrumb_list %}
-                <li>
-                    <a href="/{{ key }}">{{ breadcrumb_list[key] }}</a>
+                <li class="item">
+                    <a href="/{{ key }}">{{ breadcrumb_list[key] | capitalize }}</a>
                 </li>
+                {% if not loop.last %}
+                <li class="breadcrumb-seperator">&raquo;</li>
+                {% endif %}
             {% endfor %}
-            </ul>
-
-            <ul class="nav nav-breadcrumb">
-                {% for bp in g.admin_blueprints %}
-                <li>
-                    {% set name = bp | replace( 'admin_', '' ) %}
-                    <a href="/admin/{{ name }}">
-                        {{ name | capitalize }}
-                    </a>
-                </li>
-                {% endfor %}
             </ul> <!-- /.nav-breadcrumb -->
         </nav>
         {% endif %}
