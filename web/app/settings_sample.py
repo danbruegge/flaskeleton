@@ -5,7 +5,7 @@ class Config():
     ASSETS_DEBUG = DEBUG
     SECRET_KEY = '<secret_key>'
 
-    USER = { '<user_name': '<user_password>' }
+    USER = { '<user_name>': '<user_password>' }
 
     PAGE_DESCRIPTION = '<your description>'
     PAGE_OFFLINE = False
@@ -18,7 +18,7 @@ class Config():
         'subject': '<SUBJECT>'
     }
 
-    BLUEPRINTS = []
+    BLUEPRINTS = ['backpack',]
 
 class Production(Config):
     pass

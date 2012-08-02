@@ -3,4 +3,4 @@
 packed.css
 packed.js
 .webassets-cache
-settings.py
+web/app/settings.py
