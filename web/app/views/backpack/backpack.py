@@ -16,5 +16,10 @@ def list_blueprints():
 
     return render_template('admin/index.html', **context)
 
+#~ add filters
+@bp.app_template_filter('split')
+def split(s, sep='/'):
+    return s.split(sep)
+
 #~ define urls
 bp.add_url_rule('', view_func=list_blueprints)

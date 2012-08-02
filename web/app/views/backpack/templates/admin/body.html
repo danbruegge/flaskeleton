@@ -23,7 +23,7 @@
 
         {% if request.path != '/admin/' %}
         <nav class="breadcrumb">
-            {{ request.path|split }}
+            <p>Path: {{ request.path|split }}</p>
 
             <ul class="nav nav-breadcrumb">
                 {% for bp in g.admin_blueprints %}
