@@ -10,7 +10,6 @@ Backpack provides:
 Current TODO
 ------------
 
-* think about the fact to merge the breadcrumb line with the header line
 * clean up the code and the structure
 * add style with current web standards
 * do something cool

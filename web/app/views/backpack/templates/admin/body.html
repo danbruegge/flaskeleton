@@ -4,11 +4,25 @@
 
         <header class="header">
 
-            <h1 class="header-title">
-                <a href="/admin">Admin Area</a>
-            </h1>
-
             <nav class="header-nav">
+                <ul class="nav nav-breadcrumb">
+                {% set breadcrumb_list = request.path|breadcrumb %}
+                {% for key in breadcrumb_list %}
+                    {% if loop.first %}
+                    <li class="item">
+                        <a href="/{{ key }}">Admin Area</a>
+                    </li>
+                    {% else %}
+                    <li class="item">
+                        <a href="/{{ key }}">{{ breadcrumb_list[key] | capitalize }}</a>
+                    </li>
+                    {% endif %}
+                    {% if not loop.last %}
+                    <li class="breadcrumb-seperator">&gt;</li>
+                    {% endif %}
+                {% endfor %}
+                </ul> <!-- /.nav-breadcrumb -->
+
                 <ul class="nav nav-user">
                     <li>
                         Username
@@ -20,22 +34,6 @@
             </nav>
 
         </header>
-
-        {% if request.path != '/admin/' %}
-        <nav class="breadcrumb">
-            <ul class="nav nav-breadcrumb">
-            {% set breadcrumb_list = request.path|breadcrumb %}
-            {% for key in breadcrumb_list %}
-                <li class="item">
-                    <a href="/{{ key }}">{{ breadcrumb_list[key] | capitalize }}</a>
-                </li>
-                {% if not loop.last %}
-                <li class="breadcrumb-seperator">&raquo;</li>
-                {% endif %}
-            {% endfor %}
-            </ul> <!-- /.nav-breadcrumb -->
-        </nav>
-        {% endif %}
 
         <section class="content-wrap">
 
