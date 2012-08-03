@@ -13,7 +13,6 @@
             {% for page in pages %}
             <li class="item">
                 <a href="/admin/pages/{{ page.slug }}" class="edit">{{ page.title }}</a>
-                |
                 <a href="/admin/pages/delete/{{ page.slug }}" class="delete">delete</a>
             </li>
             {% endfor %}

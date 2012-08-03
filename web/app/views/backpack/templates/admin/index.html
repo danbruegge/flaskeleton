@@ -1,8 +1,9 @@
 {% extends "admin/body.html" %}
 
-{% block title %}Blahh{% endblock %}
+{% block title %}Welcome!{% endblock %}
 
 {% block content %}
+<article>
     <h1>Welcome!</h1>
     <p>Index Page</p>
     <br />
@@ -10,7 +11,11 @@
         Display here some infos and statistics, like how many documents are in
         the database and ... blah blah
     </p>
-    <ul class="list-pages">
+</article>
+
+<section>
+    <ul class="list-items">
+        <li class="first"><h1>Admin Blueprints</h1></li>
         {% for bp in g.admin_blueprints %}
         <li>
             {% set name = bp | replace( 'admin_', '' ) %}
@@ -19,5 +24,6 @@
             </a>
         </li>
         {% endfor %}
-    </ul> <!-- /.nav-breadcrumb -->
+    </ul> <!-- /.list-pages -->
+</section>
 {% endblock %}
