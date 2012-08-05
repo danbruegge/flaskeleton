@@ -14,8 +14,8 @@
 </article>
 
 <section>
+    <h1>Admin Blueprints</h1>
     <ul class="list-items">
-        <li class="first"><h1>Admin Blueprints</h1></li>
         {% for bp in g.admin_blueprints %}
         <li>
             {% set name = bp | replace( 'admin_', '' ) %}

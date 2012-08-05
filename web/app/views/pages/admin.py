@@ -19,7 +19,7 @@ def list_pages():
     context = {}
     context['pages'] = g.db.db.pages.find({})
 
-    return render_template('pages/list.html', **context)
+    return render_template('admin/pages/list.html', **context)
 
 def add():
     context = {}
@@ -34,7 +34,7 @@ def add():
 
         context['success'] = True
 
-    return render_template('pages/add.html', **context)
+    return render_template('admin/pages/add.html', **context)
 
 def edit(page_slug):
     context = {}
@@ -50,7 +50,7 @@ def edit(page_slug):
 
         context['success'] = True
 
-    return render_template('pages/edit.html', **context)
+    return render_template('admin/pages/edit.html', **context)
 
 def delete(page_slug):
     context = {}
@@ -60,7 +60,7 @@ def delete(page_slug):
 
     if result['n'] >= 1: context['success'] = True
 
-    return render_template('pages/del.html', **context)
+    return render_template('admin/pages/del.html', **context)
 
 #~ define urls
 bp.add_url_rule('delete/<page_slug>/', methods=('GET', 'POST'), view_func=delete)
