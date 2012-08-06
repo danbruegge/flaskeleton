@@ -8,15 +8,13 @@
                 <ul class="nav nav-breadcrumb">
                 {% set breadcrumb_list = request.path|breadcrumb %}
                 {% for key in breadcrumb_list %}
+                    <li class="nav-item">
                     {% if loop.first %}
-                    <li class="item">
                         <a href="/{{ key }}">Admin Area</a>
-                    </li>
                     {% else %}
-                    <li class="item">
                         <a href="/{{ key }}">{{ breadcrumb_list[key] | capitalize }}</a>
-                    </li>
                     {% endif %}
+                    </li>
                     {% if not loop.last %}
                     <li class="breadcrumb-seperator">&gt;</li>
                     {% endif %}
@@ -35,15 +33,11 @@
 
         </header>
 
-        <section class="content-wrap">
+        <section class="content">
 
-            <div class="content">
+            {% block content %}{% endblock %}
 
-                {% block content %}{% endblock %}
-
-            </div> <!-- /.content -->
-
-        </section>
+        </section> <!-- /.content -->
 
     </section><!-- /.wrapper -->
 

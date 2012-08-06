@@ -15,15 +15,23 @@
 
 <section>
     <h1>Admin Blueprints</h1>
-    <ul class="list-items">
+
+    <table class="list">
         {% for bp in g.admin_blueprints %}
-        <li>
+        <tr class="{{ loop.cycle('odd', 'even') }} list-item">
             {% set name = bp | replace( 'admin_', '' ) %}
-            <a href="/admin/{{ name }}">
-                {{ name | capitalize }}
-            </a>
-        </li>
+            <td class="item-title">
+                <a href="/admin/{{ name }}">
+                    {{ name | capitalize }}
+                </a>
+            </td>
+            <td class="item-option">
+                <a href="/admin/{{ name }}/add">
+                    Add
+                </a>
+            </td>
+        </tr>
         {% endfor %}
-    </ul> <!-- /.list-pages -->
+    </table> <!-- /.list -->
 </section>
 {% endblock %}

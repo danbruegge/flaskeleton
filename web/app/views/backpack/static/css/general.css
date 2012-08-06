@@ -60,47 +60,6 @@ a > img { border: none }
 
 /* ANCHOR END ****************************************************************/
 
-/*** GRID *** START **********************************************************/
-.col,
-.col-1,
-.col-2,
-.col-3,
-.col-4,
-.col-5,
-.col-6 {
-    float: left;
-    margin-right: 10px
-}
-
-.col-last {
-    margin-right: 0;
-}
-
-.col-1 {
-    width: 150px;
-}
-
-.col-2 {
-    width: 310px;
-}
-
-.col-3 {
-    width: 470px;
-}
-
-.col-4 {
-    width: 630px;
-}
-
-.col-5 {
-    width: 790px;
-}
-
-.col-6 {
-    width: 950px;
-}
-/*** GRID *** END ************************************************************/
-
 /* COMMON CLASSES START ******************************************************/
 .error,
 .error-text {

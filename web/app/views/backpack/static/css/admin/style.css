@@ -54,13 +54,13 @@
 /*** HEADER *** END **********************************************************/
 
 /*** CONTENT *** START *******************************************************/
-.content-wrap {
-    float: left;
+.content {
+    margin: 10px;
+    width: 680px;
 }
 
-.content {
-    float: left;
-    margin: 10px 0 10px 10px;
+.content-main {
+    margin: 10px 0 0;
 }
 
 article,
@@ -68,21 +68,39 @@ section {
     margin: 0 0 10px;
 }
 
-.list-items {
-    list-style-type: none;
+.list {
+    border-collapse: collapse;
     margin: 10px 0;
+    width: 100%;
 }
 
-    .list-items a {
-        display: block;
-        background-color: #333;
-        margin: 0 10px 10px 0;
-        padding: 5px 10px;
+.list,
+.list-item,
+.item-title,
+.item-option {
+    border: 1px solid #ccc;
+}
+
+.list {
+    border-top: 5px solid #333;
+}
+
+    .list-item.odd {
+        background-color: #fff;
     }
 
-    .list-items a:hover {
-        background-color: #555;
-        color: #eee;
-    }
+        .item-title,
+        .item-option {
+            padding: 10px;
+        }
+
+        .item-option {
+            text-align: center;
+            width: 60px;
+        }
+
+    .list-item a {}
+
+    .list-item a:hover {}
 /*** CONTENT *** END *********************************************************/
 
