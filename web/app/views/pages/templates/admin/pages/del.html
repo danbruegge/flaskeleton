@@ -2,10 +2,9 @@
 
 {% block title %}Delete page{% endblock %}
 
-{% block content_title %}Delete page{% endblock %}
-
 {% block content %}
-<div>
+<section>
+    <h1>Delete page</h1>
     {% if success %}
     <div class="success">
         <p>Page has been successfully deleted.</p>
@@ -16,5 +15,5 @@
         <p>Some unknown error occurred.</p>
     </div><!-- /.error -->
     {% endif %}
-</div>
+</section>
 {% endblock %}

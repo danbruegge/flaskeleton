@@ -3,10 +3,9 @@
 
 {% block title %}Edit page{% endblock %}
 
-{% block content_title %}Edit page{% endblock %}
-
 {% block content %}
-<div class="form">
+<section class="form">
+    <h1>Edit page</h1>
     {% if success %}
     <div class="success">
         <p>Page was edited successfully.</p>
@@ -19,5 +18,5 @@
     {% else %}
         {{ macros.render(form, request.path) }}
     {% endif %}
-</div><!-- /.form -->
+</section><!-- /.form -->
 {% endblock %}

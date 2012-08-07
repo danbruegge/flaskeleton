@@ -3,26 +3,26 @@
 {% block title %}Seiten{% endblock %}
 
 {% block content %}
-    <h1 class="content-title">Seiten</h1>
+<h1 class="content-title">Seiten</h1>
 
-    <div class="content-main">
-        <p>
-            <a href="/admin/pages/add/" class="edit">+add</a>
-        </p>
-        <table class="list">
-            {% for page in pages %}
-            <tr class="{{ loop.cycle('odd', 'even') }} list-item">
-                <td class="item-title">
-                    {{ page.title }}
-                </td>
-                <td class="item-option">
-                    <a href="/admin/pages/{{ page.slug }}">Edit</a>
-                </td>
-                <td class="item-option">
-                    <a href="/admin/pages/delete/{{ page.slug }}">Delete</a>
-                </td>
-            </tr>
-            {% endfor %}
-        </table>
-    </div> <!-- /#pages -->
+<div class="content-main">
+    <p class="buttons">
+        <a href="/admin/pages/add/" class="button">+add</a>
+    </p>
+    <table class="list">
+        {% for page in pages %}
+        <tr class="{{ loop.cycle('odd', 'even') }} list-item">
+            <td class="item-title">
+                {{ page.title }}
+            </td>
+            <td class="item-option">
+                <a href="/admin/pages/{{ page.slug }}">Edit</a>
+            </td>
+            <td class="item-option">
+                <a href="/admin/pages/delete/{{ page.slug }}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div> <!-- /#pages -->
 {% endblock %}

@@ -3,10 +3,10 @@
 
 {% block title %}Add pge{% endblock %}
 
-{% block content_title %}Add page{% endblock %}
-
 {% block content %}
-<div class="form">
+<section class="form">
+    <h1>Add page</h1>
+
     {% if success %}
     <div class="success">
         <p>Page was successfully created.</p>
@@ -19,5 +19,5 @@
     {% else %}
         {{ macros.render(form, '.') }}
     {% endif %}
-</div><!-- /.form -->
+</section><!-- /.form -->
 {% endblock %}
