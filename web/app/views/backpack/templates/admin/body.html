@@ -1,49 +1,48 @@
 {% extends "admin/base.html" %}
 {% block body %}
-    <section class="wrapper">
+<section class="wrapper">
 
-        <header class="header">
+    <header class="header">
 
-            <nav class="header-nav">
-                <ul class="nav nav-breadcrumb">
-                {% set breadcrumb_list = request.path|breadcrumb %}
-                {% for key in breadcrumb_list %}
-                    <li class="nav-item">
-                    {% if loop.first %}
-                        <a href="/{{ key }}">Admin Area</a>
-                    {% else %}
-                        <a href="/{{ key }}">{{ breadcrumb_list[key] | capitalize }}</a>
-                    {% endif %}
-                    </li>
-                    {% if not loop.last %}
-                    <li class="breadcrumb-seperator">&gt;</li>
-                    {% endif %}
-                {% endfor %}
-                </ul> <!-- /.nav-breadcrumb -->
+        <nav class="header-nav">
+            <ul class="nav nav-breadcrumb">
+            {% set breadcrumb_list = request.path|breadcrumb %}
+            {% for key in breadcrumb_list %}
+                <li class="nav-item">
+                {% if loop.first %}
+                    <a href="/{{ key }}">Admin Area</a>
+                {% else %}
+                    <a href="/{{ key }}">{{ breadcrumb_list[key] | capitalize }}</a>
+                {% endif %}
+                </li>
+                {% if not loop.last %}
+                <li class="breadcrumb-seperator">&gt;</li>
+                {% endif %}
+            {% endfor %}
+            </ul> <!-- /.nav-breadcrumb -->
 
-                <ul class="nav nav-user">
-                    <li>
-                        Username
-                    </li>
-                    <li>
-                        <a href="">Logout</a>
-                    </li>
-                </ul> <!-- /.nav-user -->
-            </nav>
+            <ul class="nav nav-user">
+                <li>
+                    Username
+                </li>
+                <li>
+                    <a href="">Logout</a>
+                </li>
+            </ul> <!-- /.nav-user -->
+        </nav>
 
-        </header>
+    </header>
 
-        <section class="content">
+    <section class="content">
 
-            {% block content %}{% endblock %}
+        {% block content %}{% endblock %}
 
-        </section> <!-- /.content -->
+    </section> <!-- /.content -->
 
-    </section><!-- /.wrapper -->
+</section><!-- /.wrapper -->
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="/static/js/lib/jquery-1.7.2.min.js"><\/script>')</script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="/static/js/lib/jquery-1.7.2.min.js"><\/script>')</script>
 
-    <script src="{{ url_for('admin_pages.static', filename='js/admin/script.css') }}"></script>
-
+<script src="{{ url_for('admin_pages.static', filename='js/admin/script.css') }}"></script>
 {% endblock %}

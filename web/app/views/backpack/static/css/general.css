@@ -60,7 +60,49 @@ a > img { border: none }
 
 /* ANCHOR END ****************************************************************/
 
+/* FORMS START ***************************************************************/
+fieldset {
+    background-color: #eee;
+    border: 1px solid #222;
+    padding: 20px;
+}
+
+    legend {
+        padding: 0 10px;
+    }
+
+    input,
+    textarea,
+    select {
+        background-color: #eee;
+        border: 1px solid #ccc;
+        color: #333;
+        padding: 3px 5px;
+    }
+
+        input:focus,
+        textarea:focus,
+        select:focus,
+        input:hover,
+        textarea:hover,
+        select:hover  {
+            background-color: #fff;
+            color: #333;
+        }
+
+    input[type=submit] {
+        margin: 0 0 10px;
+        padding: 2px 10px;
+    }
+/* FORMS END *****************************************************************/
+
 /* COMMON CLASSES START ******************************************************/
+.error,
+.success {
+    margin: 10px 0;
+    padding: 10px;
+}
+
 .error,
 .error-text {
     color: #f30;
@@ -73,8 +115,8 @@ a > img { border: none }
 
 .success {
     background-color: #efc;
-    border: 2px solid #3c0;
-    color: #3c0;
+    border: 2px solid #390;
+    color: #390;
 }
 
 .none {
