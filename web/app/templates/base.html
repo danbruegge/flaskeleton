@@ -23,25 +23,8 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body>
-    <section class="wrapper">
+    {% block body %} {% endblock %}
 
-        <header class="header">
-            <nav>
-                <ul class="navigation">
-                    <li></li>
-                </ul><!-- /#navigation -->
-            </nav>
-        </header><!-- /#header -->
-
-        <section class="page">
-            {% block content %}{% endblock %}
-        </section><!-- /#page -->
-
-        <footer class="footer">
-
-        </footer><!-- /#footer -->
-
-    </section><!-- /#wrapper -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="/static/js/lib/jquery-1.7.2.min.js"><\/script>')</script>
     {% assets filter="jsmin", output="js/packed.js",
