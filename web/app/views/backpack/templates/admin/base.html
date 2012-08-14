@@ -11,8 +11,17 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="stylesheet" href="{{ url_for('backpack.static', filename='css/general.css') }}" />
-        <link rel="stylesheet" href="{{ url_for('backpack.static', filename='css/admin/style.css') }}" />
+        {% assets filter="cssmin", output="css/packed.css",
+            "css/general.css",
+            "css/admin/base.css"
+        %}
+            {% if g.blueprint_url_prefix in ASSET_URL %}
+                {% set blueprint_url_prefix = g.blueprint_url_prefix %}
+            {% else %}
+                {% set blueprint_url_prefix = '' %}
+            {% endif %}
+            <link rel="stylesheet" type="text/css" href="{{ blueprint_url_prefix }}{{ ASSET_URL }}" />
+        {% endassets %}
 
         <script src="/static/js/lib/modernizr.js"></script>
         <meta name="generator" content="Flask" />

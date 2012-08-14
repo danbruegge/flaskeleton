@@ -32,15 +32,6 @@ def create_app(config_object):
         g.db = mongo
 
     assets.init_app(app)
-    css = Bundle(
-        'css/general.css',
-        'css/base.css',
-        'css/forms.css',
-        'css/admin/style.css',
-        filters='cssmin',
-        output='css/packed.css'
-    )
-    assets.register('css_all', css)
 
     from app.views import add_blueprints
     app = add_blueprints(app)

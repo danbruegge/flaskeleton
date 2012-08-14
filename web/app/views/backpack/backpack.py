@@ -1,14 +1,20 @@
 # -*- coding: utf-8 -*-
 
-from flask import Blueprint, render_template, current_app
+from flask import Blueprint, render_template, current_app, g
+from settings import BACKPACK
 
 bp = Blueprint(
     'backpack',
     __name__,
-    template_folder='templates',
-    static_folder='static',
-    url_prefix='/admin/'
+    template_folder = 'templates',
+    static_folder = 'static',
+    url_prefix = BACKPACK['url_prefix']
 )
+
+#~ before request
+@bp.before_request
+def before():
+    g.blueprint_url_prefix = BACKPACK['url_prefix']
 
 #~ view functions
 def list_blueprints():
