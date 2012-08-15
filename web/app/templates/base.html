@@ -10,13 +10,9 @@
     <title>{% block title %}{% endblock %} | Flaskeleton</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% assets filter="cssmin", output="css/packed.css",
-        "css/general.css",
-        url_for('backpack.static', filename='css/general.css'),
-        "css/forms.css"
-    %}
-        <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}" />
-    {% endassets %}
+
+    <!-- css files - webassets - currently removed for testing -->
+
     <script src="/static/js/lib/modernizr.js"></script>
     <meta name="generator" content="Flask" />
     <link rel="shortcut icon" href="/favicon.ico" />
@@ -27,11 +23,9 @@
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="/static/js/lib/jquery-1.7.2.min.js"><\/script>')</script>
-    {% assets filter="jsmin", output="js/packed.js",
-        "js/base.js"
-    %}
-        <script src="{{ ASSET_URL }}"></script>
-    {% endassets %}
+
+    <!-- js files - webassets - currently removed for testing -->
+
     {% if not config.DEBUG %}
     <!-- Piwik --><!-- End Piwik Tag -->
     {% endif %}

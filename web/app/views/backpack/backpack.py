@@ -11,11 +11,6 @@ bp = Blueprint(
     url_prefix = BACKPACK['url_prefix']
 )
 
-#~ before request
-@bp.before_request
-def before():
-    g.blueprint_url_prefix = BACKPACK['url_prefix']
-
 #~ view functions
 def list_blueprints():
     context = {}
