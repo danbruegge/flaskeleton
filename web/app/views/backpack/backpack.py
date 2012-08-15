@@ -32,4 +32,4 @@ def breadcrumb(s):
     return breadcrumb
 
 #~ define urls
-bp.add_url_rule('', view_func=list_blueprints)
+bp.add_url_rule('/', view_func=list_blueprints)

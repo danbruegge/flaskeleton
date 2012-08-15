@@ -11,14 +11,14 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        {% assets filter="cssmin", output=url_for("static", filename="css/packed.css"),
+        {% assets filter="cssmin", output="css/packed.css",
             url_for("static", filename="css/general.css"),
-            url_for(".static", filename="css/admin/base.css")
+            url_for("backpack.static", filename="css/admin.css")
         %}
-            <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}" />
+            <link rel="stylesheet" type="text/css" href="{{ ASSET_URL | replace('/static/', '', 1) }}" />
         {% endassets %}
 
-        <script src="/static/js/lib/modernizr.js"></script>
+        <script src="{{ url_for('static', filename='js/libs/modernizr.js') }}"></script>
         <meta name="generator" content="Flask" />
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png">

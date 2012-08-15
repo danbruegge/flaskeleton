@@ -1,3 +1,3 @@
 BACKPACK = {
-    'url_prefix': '/admin/'
+    'url_prefix': '/admin'
 }
