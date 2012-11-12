@@ -9,9 +9,10 @@ Backpack provides:
 * templates to wrap around a normal blueprint template (for example, base
   template)
 
+
 Current TODO
 ------------
 
-* clean up the code and the structure
-* add style with current web standards
-* do something cool
+* update styles with lesscss
+* add responsive
+* add richt text editor - http://www.wymeditor.org/
