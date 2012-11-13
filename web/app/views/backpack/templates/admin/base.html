@@ -12,7 +12,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         {% assets filter="cssmin", output="css/packed.css",
-            "css/general.css",
+            "css/normalize.css",
+            "css/global.css",
             "backpack/css/admin.css"
         %}
             <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}" />
