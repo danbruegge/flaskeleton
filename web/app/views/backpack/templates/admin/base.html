@@ -11,8 +11,9 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        {% assets filters=("cssmin", "less"), output="css/packed.css",
-            "css/general.css",
+        {% assets filter="cssmin", output="css/packed.css",
+            "css/normalize.css",
+            "css/global.css",
             "backpack/css/admin.css"
             "backpack/css/test.less"
         %}
