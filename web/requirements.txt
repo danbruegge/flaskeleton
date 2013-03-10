@@ -1,7 +1,0 @@
-Flask==0.9
-Flask-Assets==0.7
-Flask-PyMongo==0.1.2
-Flask-WTF==0.8
-cssmin==0.1.4
-jsmin==2.0.2
-yolk==0.4.3
