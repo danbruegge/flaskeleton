@@ -3,4 +3,6 @@
 packed.css
 packed.js
 .webassets-cache
-web/app/settings.py
+settings.py
+production.py
+development.py

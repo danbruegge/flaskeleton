@@ -1,0 +1,64 @@
+{% macro render(form, action) %}
+<form method="POST" action="{{ action }}">
+    {{ form.hidden_tag() }}
+    <ul class="form-fields">
+        {{ send_button() }}
+    {% for field in form %}
+        {% if field.type == 'FormField' %}
+        <li>
+            <ul>
+            {% for subfield in field %}
+                {{ render_field(subfield, form) }}
+            {% endfor %}
+            </ul>
+        </li>
+        {% else %}
+            {{ render_field(field, form) }}
+        {% endif %}
+
+        {% if field.errors %}
+        <li class="error-text">
+            Fehler:
+            <ul class="error-msg">
+                {% for error in field.errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul><!-- /.error-msg -->
+        </li><!-- /.error-color -->
+        {% endif %}
+    {% endfor %}
+        {{ send_button() }}
+    </ul>
+</form>
+{% endmacro %}
+
+{% macro render_field(field, form) %}
+<li class="form-field{% if field.short_name in form.exclude %} none{% endif %}">
+
+    <span class="field-label{% if field.flags.required %} required{% endif %}">
+        {{ field.label }}:
+    </span>
+
+    <span class="field-input">
+    {% if field.errors %}
+        {{ field(class="form-error") }}
+    {% else %}
+        {% if field.id in form._editor %}
+            {{ field(class="markItUp") }}
+        {% elif field.type == "TextAreaField" %}
+            {{ field(class="textarea-field") }}
+        {% elif field.type == "BooleanField" %}
+            {{ field }}
+        {% else %}
+            {{ field }}
+        {% endif %}
+    {% endif %}
+    </span>
+</li>
+{% endmacro %}
+
+{% macro send_button() %}
+<li class="form-button">
+    <input type="submit" value="Send" class="button send-button" />
+</li>
+{% endmacro %}
