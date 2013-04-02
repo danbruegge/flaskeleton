@@ -13,10 +13,18 @@
     <meta name="description" content="{{ config.PAGE_DESCRIPTION }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- css files - webassets - currently removed for testing -->
-    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 
-    <link rel="shortcut icon" href="/favicon.ico" />
+    <!-- css files - webassets - currently removed for testing -->
+    {% assets filter='cssmin', output='gen/packed.css',
+        url_for('pages.static', filename='css/index.css')
+    %}
+        <link href="{{ ASSET_URL }}" rel="stylesheet">
+    {% endassets %}
+
+    <link rel="shortcut icon" href="/favicon.ico">
 </head>
 <body>
     {% block page %}
