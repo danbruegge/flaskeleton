@@ -17,9 +17,8 @@
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <!-- css files - webassets - currently removed for testing -->
-    {% assets filter='cssmin', output='gen/packed.css',
-        url_for('pages.static', filename='css/index.css')
+    {% assets filter='cssmin,less', output='CACHE/packed.css',
+        'staticpages/less/index.less'
     %}
         <link href="{{ ASSET_URL }}" rel="stylesheet">
     {% endassets %}
@@ -46,8 +45,11 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="{{ url_for("static", filename="js/vendor/jquery-1.9.1.min.js") }}"><\/script>')</script>
 
-    <!-- js files - webassets - currently removed for testing -->
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    {% assets filter='jsmin', output='CACHE/packed.js',
+        'js/script.js'
+    %}
+        <script src="{{ ASSET_URL }}"></script>
+    {% endassets %}
 
     {% if not config.DEBUG %}
     <!-- Piwik --><!-- End Piwik Tag -->

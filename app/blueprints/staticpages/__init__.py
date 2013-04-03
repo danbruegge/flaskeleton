@@ -2,7 +2,7 @@
 from flask import Blueprint, render_template
 
 bp = Blueprint(
-    'pages',
+    'staticpages',
     __name__,
     template_folder='templates',
     static_folder='static'
@@ -11,4 +11,4 @@ bp = Blueprint(
 @bp.route('/', defaults={'page': 'index'})
 @bp.route('/<page>')
 def show(page):
-    return render_template('pages/%s.html' % page)
+    return render_template('staticpages/%s.html' % page)

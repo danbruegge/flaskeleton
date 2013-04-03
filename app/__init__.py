@@ -8,8 +8,9 @@ def create_app(settings):
     app = Flask(__name__)
     app.config.from_pyfile(settings)
 
-    assets = Environment()
-    assets.init_app(app)
+    app.config.url = ''
+
+    assets = Environment(app)
 
     if not app.debug:
         import logging
