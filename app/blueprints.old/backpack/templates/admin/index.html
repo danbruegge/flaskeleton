@@ -1,0 +1,35 @@
+{% extends "admin/body.html" %}
+
+{% block title %}Welcome!{% endblock %}
+
+{% block content %}
+<article class="content-article">
+    <h1>Welcome!</h1>
+    <p>
+        Display here some infos and statistics, like how many documents are in
+        the database and ... blah blah
+    </p>
+</article>
+
+<section class="content-section">
+    <h1>Admin Blueprints</h1>
+
+    <table class="list">
+        {% for bp in g.admin_blueprints %}
+        <tr class="{{ loop.cycle('odd', 'even') }} list-item">
+            {% set name = bp | replace( 'admin_', '' ) %}
+            <td class="item-title">
+                <a href="/admin/{{ name }}">
+                    {{ name | capitalize }}
+                </a>
+            </td>
+            <td class="item-option">
+                <a href="/admin/{{ name }}/add">
+                    Add
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table> <!-- /.list -->
+</section>
+{% endblock %}

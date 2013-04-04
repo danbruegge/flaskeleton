@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html lang="de" class="ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="de" class="ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="de" class="ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="de" class="ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="de"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>{% block title %}Willkommen{% endblock %} | Flaskeleton</title>
+
+    <meta name="description" content="{{ config.PAGE_DESCRIPTION }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    {% assets filter='cssmin,less', output='CACHE/packed.css',
+        'staticpages/less/index.less'
+    %}
+        <link href="{{ ASSET_URL }}" rel="stylesheet">
+    {% endassets %}
+
+    <link rel="shortcut icon" href="/favicon.ico">
+</head>
+<body>
+    {% block page %}
+    <section class="page-wrap">
+
+        {% include 'header.html' %}
+
+        <section class="page">
+
+            {% block content %}{% endblock %}
+
+        </section><!-- /.page -->
+
+        {% include 'footer.html' %}
+
+    </section><!-- /.page-wrap -->
+    {% endblock %}
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="{{ url_for("static", filename="js/vendor/jquery-1.9.1.min.js") }}"><\/script>')</script>
+
+    {% assets filter='jsmin', output='CACHE/packed.js',
+        'js/script.js'
+    %}
+        <script src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+
+    {% if not config.DEBUG %}
+    <!-- Piwik --><!-- End Piwik Tag -->
+    {% endif %}
+</body>
+</html>
