@@ -14,4 +14,4 @@ ERROR_MAIL = {
     'subject': '<SUBJECT>'
 }
 
-BLUEPRINTS = ['staticpages',]
+BLUEPRINTS = ['base', 'staticpages',]

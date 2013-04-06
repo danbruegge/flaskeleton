@@ -18,7 +18,7 @@
     <![endif]-->
 
     {% assets filter='cssmin,less', output='CACHE/packed.css',
-        'staticpages/less/index.less'
+        'base/csskeleton/less/style.less'
     %}
         <link href="{{ ASSET_URL }}" rel="stylesheet">
     {% endassets %}
