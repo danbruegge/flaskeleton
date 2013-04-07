@@ -1,2 +1,5 @@
 Flask==0.9
+Flask-Assets==0.8
+cssmin==0.1.4
+jsmin==2.0.2-1
 yolk==0.4.3
