@@ -46,7 +46,7 @@
     <script>window.jQuery || document.write('<script src="{{ url_for("static", filename="js/vendor/jquery-1.9.1.min.js") }}"><\/script>')</script>
 
     {% assets filter='jsmin', output='CACHE/packed.js',
-        'js/script.js'
+        'base/js/script.js'
     %}
         <script src="{{ ASSET_URL }}"></script>
     {% endassets %}
