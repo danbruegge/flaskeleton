@@ -17,11 +17,11 @@ def load_blueprints(app, blueprint_config='BLUEPRINTS',
         bp = import_string('%s.%s.%s' % (blueprint_path, name, blueprint_name))
         app.register_blueprint(bp)
 
-        try:
-            admin = import_string('%s.%s.%s' % (blueprint_path, name, 'admin'))
-            app.register_blueprint(admin)
-        except ImportStringError:
-            print '%s has no admin blueprint.' % name
+        # try:
+            # admin = import_string('%s.%s.%s' % (blueprint_path, name, 'admin'))
+            # app.register_blueprint(admin)
+        # except ImportStringError:
+            # print '%s has no admin blueprint.' % name
 
     return app
 

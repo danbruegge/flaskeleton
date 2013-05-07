@@ -26,6 +26,7 @@
     <link rel="shortcut icon" href="/favicon.ico">
 </head>
 <body>
+    <!--[if lt IE 9]><p class="chromeframe">Ihr Browser ist <em>veraltet!</em> <a href="http://browsehappy.com/">Steigen Sie auf einen anderen Browser um</a> oder <a href="http://www.google.com/chromeframe/?redirect=true">Installieren Sie sich Google Chrome Frame</a> um die Seite in vollen zügen genießen zu können.</p><![endif]-->
     {% block page %}
     <section class="page-wrap">
 
@@ -42,14 +43,24 @@
     </section><!-- /.page-wrap -->
     {% endblock %}
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="{{ url_for("static", filename="js/vendor/jquery-1.9.1.min.js") }}"><\/script>')</script>
+    <!--[if lt IE 9]>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <![endif]-->
+    <!--[if gte IE 9]><!-->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="{{ url_for("static", filename="js/vendor/jquery-2.0.0.min.js") }}"><\/script>')</script>
+    <!--<![endif]-->
 
     {% assets filter='jsmin', output='CACHE/packed.js',
         'base/js/script.js'
     %}
         <script src="{{ ASSET_URL }}"></script>
     {% endassets %}
+
+    <!--[if lt IE 9]>
+        <script src="{{ STATIC_URL }}project/js/vendor/respond.js"></script>
+        <script src="{{ STATIC_URL }}project/js/vendor/placeholder.js"></script>
+    <![endif]-->
 
     {% if not config.DEBUG %}
     <!-- Piwik --><!-- End Piwik Tag -->
