@@ -18,7 +18,7 @@
     <![endif]-->
 
     {% assets filter='cssmin,less', output='CACHE/packed.css',
-        'base/less/style.less'
+        'less/style.less'
     %}
         <link href="{{ ASSET_URL }}" rel="stylesheet">
     {% endassets %}
@@ -30,7 +30,15 @@
     {% block page %}
     <section class="page-wrap">
 
-        {% include 'header.html' %}
+        <header class="header">
+            <nav>
+                <ul class="navigation">
+                    <li>
+                        <a href="/">Startseite</a>
+                    </li>
+                </ul><!-- /.navigation -->
+            </nav>
+        </header><!-- /.header -->
 
         <section class="page">
 
@@ -38,7 +46,11 @@
 
         </section><!-- /.page -->
 
-        {% include 'footer.html' %}
+        <footer class="footer">
+            <p>
+                &copy; 2013 - haengebruegge.de
+            </p>
+        </footer><!-- /.footer -->
 
     </section><!-- /.page-wrap -->
     {% endblock %}
