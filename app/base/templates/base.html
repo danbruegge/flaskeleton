@@ -22,7 +22,7 @@
         'depends' list. Webassets will not search in files that come via less
         @import function.
     -->
-    {% assets filter='less,cssmin', output='CACHE/packed.css',
+    {% assets filters='less,cssmin', output='CACHE/packed.css',
         depends=('base/less/*.less'),
         'less/style.less'
     %}
@@ -69,7 +69,7 @@
         <script>window.jQuery || document.write('<script src="{{ url_for("static", filename="js/vendor/jquery-2.0.0.min.js") }}"><\/script>')</script>
     <!--<![endif]-->
 
-    {% assets filter='jsmin', output='CACHE/packed.js',
+    {% assets filters='jsmin', output='CACHE/packed.js',
         'base/js/script.js'
     %}
         <script src="{{ ASSET_URL }}"></script>
