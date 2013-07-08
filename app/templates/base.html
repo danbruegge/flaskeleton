@@ -21,9 +21,9 @@
         For automatic reloading, include static blueprint folders in the
         'depends' list. Webassets will not search in files that come via less
         @import function.
+        EXAMPLE: depends=('base/less/*.less'),
     -->
     {% assets filters='less,cssmin', output='CACHE/packed.css',
-        depends=('base/less/*.less'),
         'less/style.less'
     %}
         <link href="{{ ASSET_URL }}" rel="stylesheet">
@@ -66,18 +66,18 @@
     <![endif]-->
     <!--[if gte IE 9]><!-->
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="{{ url_for("static", filename="js/vendor/jquery-2.0.3.min.js") }}"><\/script>')</script>
+        <script>window.jQuery || document.write('<script src="{{ url_for("static", filename="origin/js/jquery-2.0.3.min.js") }}"><\/script>')</script>
     <!--<![endif]-->
 
     {% assets filters='jsmin', output='CACHE/packed.js',
-        'base/js/script.js'
+        'project/js/script.js'
     %}
         <script src="{{ ASSET_URL }}"></script>
     {% endassets %}
 
     <!--[if lt IE 9]>
-        <script src="{{ STATIC_URL }}project/js/vendor/respond.js"></script>
-        <script src="{{ STATIC_URL }}project/js/vendor/placeholder.js"></script>
+        <script src="{{ STATIC_URL }}origin/js/vendor/respond.js"></script>
+        <script src="{{ STATIC_URL }}origin/js/vendor/placeholder.js"></script>
     <![endif]-->
 
     {% if not config.DEBUG %}
