@@ -1,2 +1,2 @@
 # -*- coding: utf-8 -*-
-from view import bp
+from views import bp

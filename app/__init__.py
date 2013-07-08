@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from flask import Flask, send_file, render_template
 from flask.ext.assets import Environment
-from utils import load_blueprints, error_handler
+from base.utils import load_blueprints, error_handler
 
 
 def create_app(settings):

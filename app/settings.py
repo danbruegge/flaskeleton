@@ -10,7 +10,7 @@ ERROR_MAIL = {
     'from': '<FROM>',
     'subject': '<SUBJECT>'
 }
-BLUEPRINTS = ['base', 'staticpages', ]
+BLUEPRINTS = ('staticpages', )
 
 #_ site related
 PAGE_DESCRIPTION = '<your description>'

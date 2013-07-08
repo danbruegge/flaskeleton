@@ -24,7 +24,7 @@
         EXAMPLE: depends=('base/less/*.less'),
     -->
     {% assets filters='less,cssmin', output='CACHE/packed.css',
-        'less/style.less'
+        'project/less/style.less'
     %}
         <link href="{{ ASSET_URL }}" rel="stylesheet">
     {% endassets %}
