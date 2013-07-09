@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html lang="de" class="ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="de" class="ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="de" class="ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="de" class="ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="de"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>{% block title %}Willkommen{% endblock %} | Flaskeleton</title>
+
+    <meta name="description" content="{{ config.PAGE_DESCRIPTION }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!--
+        For automatic reloading, include static blueprint folders in the
+        'depends' list. Webassets will not search in files that come via less
+        @import function.
+        EXAMPLE: depends=('base/less/*.less'),
+    -->
+    {% assets filters='less,cssmin', output='CACHE/packed.css',
+        'project/less/style.less'
+    %}
+        <link href="{{ ASSET_URL }}" rel="stylesheet">
+    {% endassets %}
+
+    <link rel="shortcut icon" href="/favicon.ico">
+</head>
+<body>
+    <!--[if lt IE 9]><p class="chromeframe">Ihr Browser ist <em>veraltet!</em> <a href="http://browsehappy.com/">Steigen Sie auf einen anderen Browser um</a> oder <a href="http://www.google.com/chromeframe/?redirect=true">Installieren Sie sich Google Chrome Frame</a> um die Seite in vollen zügen genießen zu können.</p><![endif]-->
+    {% block page %}
+    <section class="page-wrap">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1>12</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8">
+                    <div>
+                        <h1>8</h1>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-4">
+                            <h1>4</h1>
+                        </div>
+                        <div class="col-4">
+                            <h1>4</h1>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <h1>4</h1>
+                </div>
+            </div>
+        </div>
+
+    </section><!-- /.page-wrap -->
+    {% endblock %}
+
+    <!--[if lt IE 9]>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <![endif]-->
+    <!--[if gte IE 9]><!-->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="{{ url_for("static", filename="origin/js/jquery-2.0.3.min.js") }}"><\/script>')</script>
+    <!--<![endif]-->
+
+    {% assets filters='jsmin', output='CACHE/packed.js',
+        'project/js/script.js'
+    %}
+        <script src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+
+    <!--[if lt IE 9]>
+        <script src="{{ STATIC_URL }}origin/js/vendor/respond.js"></script>
+        <script src="{{ STATIC_URL }}origin/js/vendor/placeholder.js"></script>
+    <![endif]-->
+
+    {% if not config.DEBUG %}
+    <!-- Piwik --><!-- End Piwik Tag -->
+    {% endif %}
+</body>
+</html>
