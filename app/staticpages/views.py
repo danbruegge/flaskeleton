@@ -9,11 +9,6 @@ bp = Blueprint(
 )
 
 
-@bp.route('/grid')
-def grid():
-    return render_template('grid.html')
-
-
 @bp.route('/', defaults={'page': 'index'})
 @bp.route('/<page>')
 def show(page):
