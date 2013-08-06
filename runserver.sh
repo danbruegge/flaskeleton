@@ -1,4 +1,4 @@
 #! /bin/bash
 # script to activate virtual enviroment and run flask development server
 . ../bin/activate
-python2 app.py
+python2 dev.py

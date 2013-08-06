@@ -1,12 +1,5 @@
 Flask==0.10.1
 Flask-Assets==0.8
 Flask-DebugToolbar==0.8.0
-Jinja2==2.7
-MarkupSafe==0.18
-Werkzeug==0.9.1
 cssmin==0.1.4
-itsdangerous==0.22
 jsmin==2.0.3
-webassets==0.8
-wsgiref==0.1.2
-yolk==0.4.3
