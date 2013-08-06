@@ -1,7 +1,11 @@
 # -*- coding: utf-8 -*-
 from flask import Flask, send_file, render_template
 from flask.ext.assets import Environment
+from flask.ext.dropbox import Dropbox
 from base.utils import load_blueprints, error_handler
+
+
+dropbox = Dropbox()
 
 
 def create_app(settings):
@@ -9,6 +13,10 @@ def create_app(settings):
     app.config.from_pyfile(settings)
 
     assets = Environment(app)
+
+    # Setup Dropbox and script extensions
+    dropbox.init_app(app)
+    dropbox.register_blueprint(url_prefix='/dropbox')
 
     if app.debug:
         from flask_debugtoolbar import DebugToolbarExtension

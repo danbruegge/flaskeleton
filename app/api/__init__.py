@@ -1,3 +1,2 @@
 # -*- coding: utf-8 -*-
-
-from backpack import bp
+from views import bp
