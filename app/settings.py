@@ -1,10 +1,5 @@
 # -*- coding: utf-8 -*-
 
-
-# app related
-DEBUG = False
-ASSETS_DEBUG = DEBUG
-
 BLUEPRINTS = ('pages', )
 
 # site related
