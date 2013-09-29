@@ -2,7 +2,7 @@
 from flask import Flask, request, send_file, send_from_directory,\
     render_template
 from flask.ext.assets import Environment
-from base.utils import load_blueprints, error_handler
+from base.utils.core import load_blueprints, error_handler
 
 
 assets = Environment()

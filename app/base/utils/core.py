@@ -11,24 +11,30 @@ def load_blueprints(app, blueprint_config='BLUEPRINTS',
 
     TODO: fix the admin stuff
     """
-    from werkzeug.utils import import_string, ImportStringError
+    from werkzeug.utils import import_string
+    # from werkzeug.utils import import_string, ImportStringError
 
-    for name in app.config[blueprint_config]:
-        bp = import_string('%s.%s.%s' % (blueprint_path, name, blueprint_name))
-        app.register_blueprint(bp)
+    try:
+        for name in app.config[blueprint_config]:
+            bp = import_string('%s.%s.%s' % (blueprint_path, name,
+                                             blueprint_name))
+            app.register_blueprint(bp)
 
-        # try:
-            # admin = import_string('%s.%s.%s' % (blueprint_path, name, 'admin'))
-            # app.register_blueprint(admin)
-        # except ImportStringError:
-            # print '%s has no admin blueprint.' % name
+            # try:
+                # admin = import_string('%s.%s.%s'
+                    # % (blueprint_path, name, 'admin'))
+                # app.register_blueprint(admin)
+            # except ImportStringError:
+                # print '%s has no admin blueprint.' % name
+    except KeyError:
+        print 'No blueprints'
 
     return app
 
 
 def error_handler(app):
     """Seperated to keep the `create_app()` clean.
-        Onely pass the app context and set the rights variables::
+    Only pass the app context and set the rights variables::
 
         ERROR_MAIL = {
             'smtp': '<SMTP SERVER',
@@ -37,12 +43,22 @@ def error_handler(app):
             'subject': '<SUBJECT>'
         }
     """
-    import logging
     from logging.handlers import SMTPHandler
+    from logging import Formatter
 
     mail_handler = SMTPHandler(app.config['ERROR_MAIL']['smtp'],
                                app.config['ERROR_MAIL']['to'],
                                app.config['ERROR_MAIL']['from'],
                                app.config['ERROR_MAIL']['subject'])
-    mail_handler.setLevel(logging.ERROR)
+    mail_handler.setFormatter(Formatter("""
+    Message type:       %(levelname)s
+    Location:           %(pathname)s:%(lineno)d
+    Module:             %(module)s
+    Function:           %(funcName)s
+    Time:               %(asctime)s
+
+    Message:
+
+    %(message)s
+    """))
     app.logger.addHandler(mail_handler)
