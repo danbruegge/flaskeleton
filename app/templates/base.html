@@ -175,7 +175,7 @@
     <![endif]-->
     <!--[if gte IE 9]><!-->
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="{{ url_for("static", filename="origin/js/jquery-2.0.3.min.js") }}"><\/script>')</script>
+        <script>window.jQuery || document.write('<script src="{{ url_for("static", filename="base/js/libs/jquery-2.0.3.min.js") }}"><\/script>')</script>
     <!--<![endif]-->
 
     {% assets filters='jsmin', output='CACHE/packed.js',
@@ -187,8 +187,8 @@
     {% endassets %}
 
     <!--[if lt IE 9]>
-        <script src="{{ STATIC_URL }}origin/js/vendor/respond.js"></script>
-        <script src="{{ STATIC_URL }}origin/js/vendor/placeholder.js"></script>
+        <script src="{{ STATIC_URL }}base/js/respond.js"></script>
+        <script src="{{ STATIC_URL }}base/js/placeholder.js"></script>
     <!--[endif]-->
 
     {% if not config.DEBUG %}
