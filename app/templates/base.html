@@ -45,22 +45,90 @@
     {% include 'browsermessage.html' %}
 
     {% block page %}
-    <section class="container page-wrap">
+    <!-- .page-wrap -->
+    <section class="page-wrap">
 
         {% block header %}
-        <header class="well header">
+        <!-- .header -->
+        <header class="header">
 
-            <h1>{% block header_title %}Header Title{% endblock %}</h1>
+            <!-- .navbar navbar-default -->
+            <div class="navbar navbar-default" role="navigation">
 
-        </header><!-- /.well.header -->
+                <!-- .container -->
+                <div class="container">
+
+                    <!-- .navbar-header -->
+                    <div class="navbar-header">
+
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#MainNavigation">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a href="#" class="navbar-brand">Brand</a>
+
+                    </div>
+                    <!-- /.navbar-header -->
+
+                    <!-- #MainNavigation.collapse navbar-collapse -->
+                    <div id="MainNavigation" class="collapse navbar-collapse pull-right">
+
+                        <!-- .nav navbar-nav -->
+                        <ul class="nav navbar-nav">
+                            <li class="active">
+                                <a href="#">Link 1</a>
+                            </li>
+                            <li>
+                                <a href="#">Link 2</a>
+                            </li>
+                            <li>
+                                <a href="#">Link 3</a>
+                            </li>
+                        </ul>
+                        <!-- /.nav navbar-nav -->
+
+                    </div>
+                    <!-- /#MainNavigation.collapse navbar-collapse -->
+
+                </div>
+                <!-- /.container -->
+
+            </div>
+            <!-- /.navbar navbar-default -->
+
+        </header>
+        <!-- /.header -->
         {% endblock %}
 
-        <section class="page">
+        <!-- /.container page -->
+        <section class="container page">
 
-            <hr />
-
+            <!-- .row -->
             <div class="row">
 
+                <!-- .col-lg-8 col-sm-8 col-offset-1 -->
+                <div class="col-lg-8 col-sm-8 col-offset-1">
+
+                    <!-- content-wrap -->
+                    <div class="content-wrap">
+
+                        <!-- .content -->
+                        <section class="content">
+
+                            {% block content %}{% endblock %}
+
+                        </section>
+                        <!-- /.content -->
+
+                    </div>
+                    <!-- /.content-wrap -->
+
+                </div>
+                <!-- /.col-lg-8 col-sm-8 col-offset-1 -->
+
+                <!-- .col-lg-3 col-sm-3 -->
                 <div class="col-lg-3 col-sm-3">
 
                     {% block sidebar %}
@@ -69,41 +137,37 @@
                     </h1>
                     {% endblock %}
 
-                </div><!-- /.col-lg-3.col-sm-3 -->
+                </div>
+                <!-- /.col-lg-3 col-sm-3 -->
 
-                <div class="col-lg-8 col-sm-8 col-offset-1">
+            </div>
+            <!-- /.row -->
 
-                    <div class="content-wrap">
+        </section>
+        <!-- /.container page -->
 
-                        <section class="content">
+    </section>
+    <!-- /.page-wrap -->
 
-                            {% block content %}{% endblock %}
+    <!-- .footer-wrap -->
+    <div class="footer-wrap">
 
-                        </section><!-- /.content -->
+        <!-- .well well-sm footer -->
+        <footer class="well well-sm footer">
 
-                    </div><!-- /.content-wrap -->
+            <!-- .container -->
+            <div class="container">
 
-                </div><!-- /.col-lg-8.col-sm-8.col-offset-1 -->
-
-            </div><!-- /.row -->
-
-            <hr />
-
-        </section><!-- /.page -->
-
-    </section><!-- /.container.page-wrap -->
-
-    <div class="container footer-wrap">
-
-        <footer class="footer">
-
-            <p class="text-center">
                 &copy; 2013 - haengebruegge.de
-            </p><!-- /.text-center -->
 
-        </footer><!-- /.footer -->
+            </div>
+            <!-- /.container -->
 
-    </div><!-- /.container.footer-wrap -->
+        </footer>
+        <!-- /.well well-sm footer -->
+
+    </div>
+    <!-- /.footer-wrap -->
     {% endblock %}
 
     <!--[if lt IE 9]>
@@ -115,6 +179,8 @@
     <!--<![endif]-->
 
     {% assets filters='jsmin', output='CACHE/packed.js',
+        'bootstrap/js/transition.js',
+        'bootstrap/js/collapse.js',
         'project/js/script.js'
     %}
         <script src="{{ ASSET_URL }}"></script>

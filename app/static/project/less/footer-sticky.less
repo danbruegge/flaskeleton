@@ -1,8 +1,8 @@
 /* variables for simpler sticky-footer handling */
 @media (min-width: 768px) {
     @height: 40px;
-    @margin-top: 10px;
-    @padding-top: 20px;
+    @margin-top: 0;
+    @padding-top: 0;
 
     html,
     body,
@@ -23,7 +23,6 @@
     .footer-wrap {
         clear:both;
         height: @height;
-        margin-bottom: @margin-top;
         margin-top: -(@height + @margin-top); /* negative value of footer height */
         overflow: hidden;
         padding: 0px;
