@@ -28,6 +28,7 @@ def create_app(settings):
         return render_template('404.html'), 404
 
     @app.route('/robots.txt')
+    @app.route('/favicon.ico')
     # @app.route('/sitemap.xml')
     # @app.route('/google-webmaster-tools-auth.html')
     def static_from_root():
