@@ -25,7 +25,7 @@ def create_app(settings):
 
     @app.errorhandler(404)
     def page_not_found(e):
-        return render_template('404.html')
+        return render_template('404.html'), 404
 
     @app.route('/robots.txt')
     # @app.route('/sitemap.xml')

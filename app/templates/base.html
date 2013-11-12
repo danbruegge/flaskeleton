@@ -77,14 +77,14 @@
 
                         <!-- .nav navbar-nav -->
                         <ul class="nav navbar-nav">
-                            <li class="active">
-                                <a href="#">Link 1</a>
+                            <li{% if '/' == request.path %} class="active"{% endif %}>
+                                <a href="/">Startpage</a>
                             </li>
-                            <li>
-                                <a href="#">Link 2</a>
+                            <li{% if 'info' in request.path %} class="active"{% endif %}>
+                                <a href="/info">Info</a>
                             </li>
-                            <li>
-                                <a href="#">Link 3</a>
+                            <li{% if 'admin' in request.path %} class="active"{% endif %}>
+                                <a href="/admin">Admin</a>
                             </li>
                         </ul>
                         <!-- /.nav navbar-nav -->
@@ -128,17 +128,21 @@
                 </div>
                 <!-- /.col-lg-8 col-sm-8 col-offset-1 -->
 
-                <!-- .col-lg-3 col-sm-3 -->
-                <div class="col-lg-3 col-sm-3">
+                <!-- .col-lg-3 col-sm-4 -->
+                <div class="col-lg-4 col-sm-4">
 
                     {% block sidebar %}
                     <h1>
                         Sidebar
                     </h1>
+                    <p>
+                        Lorem ipsum dolor sit amet, consetetur sadipscing
+                        elitr, sed diam nonumyeirmod tempor invidunt ut la
+                    </p>
                     {% endblock %}
 
                 </div>
-                <!-- /.col-lg-3 col-sm-3 -->
+                <!-- /.col-lg-4 col-sm-4 -->
 
             </div>
             <!-- /.row -->

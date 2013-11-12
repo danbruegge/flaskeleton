@@ -1,10 +1,22 @@
 {% extends 'base.html' %}
 
-{% block title %}404 - Seite nicht gefunden{% endblock %}
+{% block title %}{% endblock %}
+
+{% set title = '404 - Seite nicht gefunden' %}
+{% block page_title %}{{ title }}{% endblock %}
+{% block page_description %}{% endblock %}
+{% block header_title %}{{ title }}{% endblock %}
 
 {% block content %}
-<h1>404 - Seite nicht gefunden</h1>
+<h1>{{ title }}</h1>
 <p>
     Die Seite nach der Sie gesucht haben wurde leider nicht gefunden.
 </p>
+{% endblock %}
+
+{% block sidebar %}
+<h1>Other pages</h1>
+<ul class="nav nav-pills nav-stacked">
+    <li><a href="/">Startpage</a></li>
+</ul>
 {% endblock %}

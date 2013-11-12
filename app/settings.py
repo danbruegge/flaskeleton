@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import os
 
-BLUEPRINTS = ('pages', )
+BLUEPRINTS = ('simplepages', )
 
 # Upload stuff
 MEDIA_ROOT = '%s/%s' % (os.path.dirname(__file__), '../../media')
