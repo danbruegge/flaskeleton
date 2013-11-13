@@ -17,7 +17,7 @@ def extend_filename(filename, extend):
     path, name = os.path.split(filename)
 
     # add name addition
-    name = name.replace('.', '%s.' % extend)
+    name = name.replace('.', '{0}.'.format(extend))
 
     # put all together and return
     return os.path.join(path, name)

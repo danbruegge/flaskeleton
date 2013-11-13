@@ -15,6 +15,6 @@ bp = Blueprint(
 def show(slug):
     try:
         return render_template('simplepages/{0}.html'.format(slug))
-    except TemplateNotFound:
-        current_app.logger.error('404: Page "{0}" not found.'.format(slug))
+    except TemplateNotFound, e:
+        current_app.logger.error(e)
         abort(404)
