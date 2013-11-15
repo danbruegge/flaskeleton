@@ -1,4 +1,8 @@
 # -*- coding: utf-8 -*-
+import logging
+from logging.handlers import SMTPHandler
+from werkzeug.utils import import_string
+# from werkzeug.utils import ImportStringError
 
 
 def load_blueprints(app, blueprint_config='BLUEPRINTS',
@@ -7,18 +11,21 @@ def load_blueprints(app, blueprint_config='BLUEPRINTS',
     a BLUEPRINTS constant with the a list of bluleprint names in the
     settings.py::
 
-        BLUEPRINTS = ['blueprint1', 'blueprint2', ]
+        BLUEPRINTS = ('blueprint1', 'blueprint2', )
 
     TODO: fix the admin stuff
     """
-    from werkzeug.utils import import_string, ImportStringError
 
     for name in app.config[blueprint_config]:
-        bp = import_string('%s.%s.%s' % (blueprint_path, name, blueprint_name))
+        bp = import_string(
+            '{0}.{1}.{2}'.format(blueprint_path, name, blueprint_name)
+        )
         app.register_blueprint(bp)
 
         # try:
-            # admin = import_string('%s.%s.%s' % (blueprint_path, name, 'admin'))
+            # admin = import_string(
+                # '{0}.{1}.{2}'.format(blueprint_path, name, 'admin')
+            # )
             # app.register_blueprint(admin)
         # except ImportStringError:
             # print '%s has no admin blueprint.' % name
@@ -37,8 +44,6 @@ def error_handler(app):
             'subject': '<SUBJECT>'
         }
     """
-    import logging
-    from logging.handlers import SMTPHandler
 
     mail_handler = SMTPHandler(app.config['ERROR_MAIL']['smtp'],
                                app.config['ERROR_MAIL']['to'],

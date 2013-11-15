@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 import os
 
-BLUEPRINTS = ('pages', )
+BLUEPRINTS = ('simplepages', )
 
 # Upload stuff
-MEDIA_ROOT = '%s/%s' % (os.path.dirname(__file__), '../../media')
+MEDIA_ROOT = '{0}/{1}'.format(os.path.dirname(__file__), '../../media')
 
 # Site related
 PAGE_DESCRIPTION = '<your description>'

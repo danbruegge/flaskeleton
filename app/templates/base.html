@@ -8,9 +8,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-    <title>{% block title %}Welcome{% endblock %} | Flaskeleton</title>
+    <title>{% block page_title %}Welcome{% endblock %} | Flaskeleton</title>
 
-    <meta name="description" content="{{ config.PAGE_DESCRIPTION }}">
+    <meta name="description" content="{% block page_description %}{{ config.PAGE_DESCRIPTION }}{% endblock %}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!--[if lt IE 9]>
@@ -39,71 +39,141 @@
         <link href="/static/project/css/compiled.css" rel="stylesheet">
     {% endif %}
 
-    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="shortcut icon" href="favicon.ico">
 </head>
 <body>
     {% include 'browsermessage.html' %}
 
     {% block page %}
-    <section class="container page-wrap">
+    <!-- .page-wrap -->
+    <section class="page-wrap">
 
         {% block header %}
-        <header class="well header">
+        <!-- .header -->
+        <header class="header">
 
-            <h1>{% block header_title %}Header Title{% endblock %}</h1>
+            <!-- .navbar navbar-default -->
+            <div class="navbar navbar-default" role="navigation">
 
-        </header><!-- /.well.header -->
+                <!-- .container -->
+                <div class="container">
+
+                    <!-- .navbar-header -->
+                    <div class="navbar-header">
+
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#MainNavigation">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a href="http://flask.pocoo.org/" class="navbar-brand">
+                            &raquo; Flaskeleton
+                        </a>
+
+                    </div>
+                    <!-- /.navbar-header -->
+
+                    <!-- #MainNavigation.collapse navbar-collapse -->
+                    <div id="MainNavigation" class="collapse navbar-collapse pull-right">
+
+                        <!-- .nav navbar-nav -->
+                        <ul class="nav navbar-nav">
+                            <li{% if '/' == request.path %} class="active"{% endif %}>
+                                <a href="/">Startpage</a>
+                            </li>
+                            <li{% if 'info' in request.path %} class="active"{% endif %}>
+                                <a href="/info">Info</a>
+                            </li>
+                            <li{% if 'admin' in request.path %} class="active"{% endif %}>
+                                <a href="/admin">Admin</a>
+                            </li>
+                        </ul>
+                        <!-- /.nav navbar-nav -->
+
+                    </div>
+                    <!-- /#MainNavigation.collapse navbar-collapse -->
+
+                </div>
+                <!-- /.container -->
+
+            </div>
+            <!-- /.navbar navbar-default -->
+
+        </header>
+        <!-- /.header -->
         {% endblock %}
 
-        <section class="page">
+        <!-- /.container page -->
+        <section class="container page">
 
-            <hr />
-
+            <!-- .row -->
             <div class="row">
 
-                <div class="col-lg-3 col-sm-3">
+                <!-- .col-lg-8 col-sm-8 col-offset-1 -->
+                <div class="col-lg-8 col-sm-8 col-offset-1">
+
+                    <!-- content-wrap -->
+                    <div class="content-wrap">
+
+                        <!-- .content -->
+                        <section class="content">
+
+                            {% block content %}{% endblock %}
+
+                        </section>
+                        <!-- /.content -->
+
+                    </div>
+                    <!-- /.content-wrap -->
+
+                </div>
+                <!-- /.col-lg-8 col-sm-8 col-offset-1 -->
+
+                <!-- .col-lg-3 col-sm-4 -->
+                <div class="col-lg-4 col-sm-4">
 
                     {% block sidebar %}
                     <h1>
                         Sidebar
                     </h1>
+                    <p>
+                        Lorem ipsum dolor sit amet, consetetur sadipscing
+                        elitr, sed diam nonumyeirmod tempor invidunt ut la
+                    </p>
                     {% endblock %}
 
-                </div><!-- /.col-lg-3.col-sm-3 -->
+                </div>
+                <!-- /.col-lg-4 col-sm-4 -->
 
-                <div class="col-lg-8 col-sm-8 col-offset-1">
+            </div>
+            <!-- /.row -->
 
-                    <div class="content-wrap">
+        </section>
+        <!-- /.container page -->
 
-                        <section class="content">
+    </section>
+    <!-- /.page-wrap -->
 
-                            {% block content %}{% endblock %}
+    <!-- .footer-wrap -->
+    <div class="footer-wrap">
 
-                        </section><!-- /.content -->
+        <!-- .well well-sm footer -->
+        <footer class="well well-sm footer">
 
-                    </div><!-- /.content-wrap -->
+            <!-- .container -->
+            <div class="container">
 
-                </div><!-- /.col-lg-8.col-sm-8.col-offset-1 -->
-
-            </div><!-- /.row -->
-
-            <hr />
-
-        </section><!-- /.page -->
-
-    </section><!-- /.container.page-wrap -->
-
-    <div class="container footer-wrap">
-
-        <footer class="footer">
-
-            <p class="text-center">
                 &copy; 2013 - haengebruegge.de
-            </p><!-- /.text-center -->
 
-        </footer><!-- /.footer -->
+            </div>
+            <!-- /.container -->
 
-    </div><!-- /.container.footer-wrap -->
+        </footer>
+        <!-- /.well well-sm footer -->
+
+    </div>
+    <!-- /.footer-wrap -->
     {% endblock %}
 
     <!--[if lt IE 9]>
@@ -111,19 +181,21 @@
     <![endif]-->
     <!--[if gte IE 9]><!-->
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="{{ url_for("static", filename="origin/js/jquery-2.0.3.min.js") }}"><\/script>')</script>
+        <script>window.jQuery || document.write('<script src="{{ url_for("static", filename="base/js/libs/jquery-2.0.3.min.js") }}"><\/script>')</script>
     <!--<![endif]-->
 
     {% assets filters='jsmin', output='CACHE/packed.js',
+        'bootstrap/js/transition.js',
+        'bootstrap/js/collapse.js',
         'project/js/script.js'
     %}
         <script src="{{ ASSET_URL }}"></script>
     {% endassets %}
 
     <!--[if lt IE 9]>
-        <script src="{{ STATIC_URL }}origin/js/vendor/respond.js"></script>
-        <script src="{{ STATIC_URL }}origin/js/vendor/placeholder.js"></script>
-    <![endif]-->
+        <script src="{{ STATIC_URL }}base/js/respond.js"></script>
+        <script src="{{ STATIC_URL }}base/js/placeholder.js"></script>
+    <!--[endif]-->
 
     {% if not config.DEBUG %}
     <!-- Piwik --><!-- End Piwik Tag -->
