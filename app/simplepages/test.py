@@ -1,24 +1,20 @@
 # -*- coding: utf-8 -*-
+import sys
 import os
 import unittest
-import flask
 
-from views import bp
+sys.path = [os.path.abspath('')] + sys.path
+
+from app.test import BaseTestCase
 
 
-class SimplepagesTestCase(unittest.TestCase):
-    def setUp(self):
-        self.app = flask.Flask(__name__)
-        self.app.register_blueprint(bp)
-        self.appTC = self.app.test_client()
-
-    def tearDown(self):
-        pass
-
+class SimplepagesTestCase(BaseTestCase):
     def test_show(self):
-        r = self.appTC.get('/info')
-        print r.data
-        assert '404 Not Found' in r.data
+        error_msg = '404 - Seite nicht gefunden / Page not found'
+        page = self.test_client.get('/')
+        assert error_msg not in page.data
+        page = self.test_client.get('/info')
+        assert error_msg not in page.data
 
 
 if __name__ == '__main__':
