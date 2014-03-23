@@ -17,6 +17,9 @@
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
+    <!-- get purecss -->
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.4.2/pure-min.css">
+
     <!--
         For automatic reloading, include static blueprint folders in the
         'depends' list. Webassets will not search in files that come via less
@@ -29,7 +32,6 @@
             output='CACHE/packed.css',
             depends=(
                 'project/less/*.less',
-                'project/less/bootstrap/*.less'
             ),
             'project/less/style.less'
         %}
@@ -50,53 +52,47 @@
 
         {% include 'header.html' %}
 
-        <!-- /.container page -->
-        <section class="container page">
+        <!-- /.page -->
+        <section class="page">
 
-            <!-- .row -->
-            <div class="row">
+            <!-- . -->
+            <div class="">
 
-                <!-- .col-lg-8 col-sm-8 col-offset-1 -->
-                <div class="col-lg-8 col-sm-8 col-offset-1">
+                <!-- content-wrap -->
+                <div class="content-wrap">
 
-                    <!-- content-wrap -->
-                    <div class="content-wrap">
+                    <!-- .content -->
+                    <section class="content">
 
-                        <!-- .content -->
-                        <section class="content">
+                        {% block content %}{% endblock %}
 
-                            {% block content %}{% endblock %}
-
-                        </section>
-                        <!-- /.content -->
-
-                    </div>
-                    <!-- /.content-wrap -->
+                    </section>
+                    <!-- /.content -->
 
                 </div>
-                <!-- /.col-lg-8 col-sm-8 col-offset-1 -->
-
-                <!-- .col-lg-3 col-sm-4 -->
-                <div class="col-lg-4 col-sm-4">
-
-                    {% block sidebar %}
-                    <h1>
-                        Sidebar
-                    </h1>
-                    <p>
-                        Lorem ipsum dolor sit amet, consetetur sadipscing
-                        elitr, sed diam nonumyeirmod tempor invidunt ut la
-                    </p>
-                    {% endblock %}
-
-                </div>
-                <!-- /.col-lg-4 col-sm-4 -->
+                <!-- /.content-wrap -->
 
             </div>
-            <!-- /.row -->
+            <!-- /. -->
+
+            <!-- . -->
+            <div class="">
+
+                {% block sidebar %}
+                <h1>
+                    Sidebar
+                </h1>
+                <p>
+                    Lorem ipsum dolor sit amet, consetetur sadipscing
+                    elitr, sed diam nonumyeirmod tempor invidunt ut la
+                </p>
+                {% endblock %}
+
+            </div>
+            <!-- /. -->
 
         </section>
-        <!-- /.container page -->
+        <!-- /.page -->
 
     </section>
     <!-- /.page-wrap -->
@@ -114,8 +110,6 @@
     <!--<![endif]-->
 
     {% assets filters='jsmin', output='CACHE/packed.js',
-        'bootstrap/js/transition.js',
-        'bootstrap/js/collapse.js',
         'project/js/script.js'
     %}
         <script src="{{ ASSET_URL }}"></script>
