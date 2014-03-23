@@ -1,5 +1,6 @@
 TODO
 ====
+* remove bootstrap and impement purecss
 * backend
   * user login
   * user management
