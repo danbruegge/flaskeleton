@@ -1,37 +1,26 @@
 <!-- .header -->
 <header class="header">
 
-    <!-- . -->
-    <div class="" role="navigation">
+    <!-- .pure-menu pure-menu-open pure-menu-horizontal -->
+    <nav class="pure-menu pure-menu-open pure-menu-horizontal">
+        <a class="pure-menu-heading" href="/">Site Title</a>
 
-        <!-- . -->
-        <div class="">
+        <!-- #MainNavigation -->
+        <ul id="MainNavigation" role="navigation">
+            <li{% if '/' == request.path %} class="active"{% endif %}>
+                <a href="/">Startpage</a>
+            </li>
+            <li{% if 'info' in request.path %} class="active"{% endif %}>
+                <a href="/info">Info</a>
+            </li>
+            <li{% if 'admin' in request.path %} class="active"{% endif %}>
+                <a href="/admin">Admin</a>
+            </li>
+        </ul>
+        <!-- /#MainNavigation -->
 
-            <!-- #MainNavigation -->
-            <div id="MainNavigation">
-
-                <!-- . -->
-                <ul class="">
-                    <li{% if '/' == request.path %} class="active"{% endif %}>
-                        <a href="/">Startpage</a>
-                    </li>
-                    <li{% if 'info' in request.path %} class="active"{% endif %}>
-                        <a href="/info">Info</a>
-                    </li>
-                    <li{% if 'admin' in request.path %} class="active"{% endif %}>
-                        <a href="/admin">Admin</a>
-                    </li>
-                </ul>
-                <!-- /. -->
-
-            </div>
-            <!-- /#MainNavigation -->
-
-        </div>
-        <!-- /. -->
-
-    </div>
-    <!-- /. -->
+    </nav>
+    <!-- /.pure-menu pure-menu-open pure-menu-horizontal -->
 
 </header>
 <!-- /.header -->

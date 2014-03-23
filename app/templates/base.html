@@ -55,41 +55,47 @@
         <!-- /.page -->
         <section class="page">
 
-            <!-- . -->
-            <div class="">
+            <!-- .pure-g-r -->
+            <div class="pure-g-r">
 
-                <!-- content-wrap -->
-                <div class="content-wrap">
+                <!-- .pure-u-2-3 -->
+                <div class="pure-u-2-3">
 
-                    <!-- .content -->
-                    <section class="content">
+                    <!-- content-wrap -->
+                    <div class="content-wrap">
 
-                        {% block content %}{% endblock %}
+                        <!-- .content -->
+                        <section class="content">
 
-                    </section>
-                    <!-- /.content -->
+                            {% block content %}{% endblock %}
+
+                        </section>
+                        <!-- /.content -->
+
+                    </div>
+                    <!-- /.content-wrap -->
 
                 </div>
-                <!-- /.content-wrap -->
+                <!-- /.pure-u-2-3 -->
+
+                <!-- .pure-u-1-3 -->
+                <div class="pure-u-1-3">
+
+                    {% block sidebar %}
+                    <h1>
+                        Sidebar
+                    </h1>
+                    <p>
+                        Lorem ipsum dolor sit amet, consetetur sadipscing
+                        elitr, sed diam nonumyeirmod tempor invidunt ut la
+                    </p>
+                    {% endblock %}
+
+                </div>
+                <!-- /.pure-u-1-3 -->
 
             </div>
-            <!-- /. -->
-
-            <!-- . -->
-            <div class="">
-
-                {% block sidebar %}
-                <h1>
-                    Sidebar
-                </h1>
-                <p>
-                    Lorem ipsum dolor sit amet, consetetur sadipscing
-                    elitr, sed diam nonumyeirmod tempor invidunt ut la
-                </p>
-                {% endblock %}
-
-            </div>
-            <!-- /. -->
+            <!-- /.pure-g-r -->
 
         </section>
         <!-- /.page -->
