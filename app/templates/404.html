@@ -2,15 +2,18 @@
 
 {% block title %}{% endblock %}
 
-{% set title = '404 - Seite nicht gefunden' %}
+{% set title = '404 - Seite nicht gefunden / Page not found' %}
 {% block page_title %}{{ title }}{% endblock %}
-{% block page_description %}{% endblock %}
+{% block page_description %}Nothing found on this page{% endblock %}
 {% block header_title %}{{ title }}{% endblock %}
 
 {% block content %}
 <h1>{{ title }}</h1>
 <p>
     Die Seite nach der Sie gesucht haben wurde leider nicht gefunden.
+</p>
+<p>
+    The you're looking for, seems not to exist.
 </p>
 {% endblock %}
 
