@@ -1,0 +1,53 @@
+<!-- .header -->
+<header class="header">
+
+    <!-- .navbar navbar-default -->
+    <div class="navbar navbar-default" role="navigation">
+
+        <!-- .container -->
+        <div class="container">
+
+            <!-- .navbar-header -->
+            <div class="navbar-header">
+
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#MainNavigation">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="http://flask.pocoo.org/" class="navbar-brand">
+                    &raquo; Flaskeleton
+                </a>
+
+            </div>
+            <!-- /.navbar-header -->
+
+            <!-- #MainNavigation.collapse navbar-collapse -->
+            <div id="MainNavigation" class="collapse navbar-collapse pull-right">
+
+                <!-- .nav navbar-nav -->
+                <ul class="nav navbar-nav">
+                    <li{% if '/' == request.path %} class="active"{% endif %}>
+                        <a href="/">Startpage</a>
+                    </li>
+                    <li{% if 'info' in request.path %} class="active"{% endif %}>
+                        <a href="/info">Info</a>
+                    </li>
+                    <li{% if 'admin' in request.path %} class="active"{% endif %}>
+                        <a href="/admin">Admin</a>
+                    </li>
+                </ul>
+                <!-- /.nav navbar-nav -->
+
+            </div>
+            <!-- /#MainNavigation.collapse navbar-collapse -->
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.navbar navbar-default -->
+
+</header>
+<!-- /.header -->
