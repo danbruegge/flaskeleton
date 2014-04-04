@@ -27,6 +27,7 @@ def create_app(settings):
         from flask_debugtoolbar import DebugToolbarExtension
         DebugToolbarExtension(app)
     else:
+        # add errorhandler
         error_handler(app)
 
     # simple load all blueprints, enabled in settings

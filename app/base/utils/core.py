@@ -26,6 +26,8 @@ def load_blueprints(app, blueprint_config='BLUEPRINTS',
         try:
             app.config.from_pyfile('{0}/settings.py'.format(name))
         except IOError:
+            # no need to log some errors, because it is not life safing here
+            # and it will spam the log files...
             pass
 
         # try:

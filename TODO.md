@@ -1,8 +1,9 @@
 TODO
 ====
-* remove bootstrap and impement purecss
+* better default style with purecss?
+* better integration of the users app, rethink some parts
 * backend
-  * user login
+  * user login, done with the users app?!
   * user management
   * user roles
   * content management
