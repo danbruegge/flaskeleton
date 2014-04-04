@@ -1,27 +1,40 @@
 # -*- coding: utf-8 -*-
-from flask import Flask, request, send_file, send_from_directory,\
-    render_template
+from flask import (Flask, g, request, send_file, send_from_directory,
+                   render_template)
 from flask.ext.assets import Environment
+from flask.ext.login import LoginManager, current_user
 from base.utils.core import load_blueprints, error_handler
 
 
 assets = Environment()
+login_manager = LoginManager()
 
 
 def create_app(settings):
     app = Flask(__name__)
     app.config.from_pyfile(settings)
 
+    # Setup assets
     assets.init_app(app)
 
+    # Setup LoginManager
+    login_manager.init_app(app)
+    login_manager.login_view = 'users.login'
+
+    # Enable DebugToolbar on debug
+    # Enable error handler on productive mode
     if app.debug:
         from flask_debugtoolbar import DebugToolbarExtension
-        toolbar = DebugToolbarExtension(app)
-
-    if not app.debug:
+        DebugToolbarExtension(app)
+    else:
         error_handler(app)
 
+    # simple load all blueprints, enabled in settings
     load_blueprints(app)
+
+    @app.before_request
+    def before_request():
+        g.user = current_user
 
     @app.errorhandler(404)
     def page_not_found(e):

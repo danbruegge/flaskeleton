@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import os
 
-BLUEPRINTS = ('simplepages', )
+BLUEPRINTS = ('simplepages', 'users',)
 
 # Upload stuff
 MEDIA_ROOT = '{0}/{1}'.format(os.path.dirname(__file__), '../../media')
@@ -9,3 +9,5 @@ MEDIA_ROOT = '{0}/{1}'.format(os.path.dirname(__file__), '../../media')
 # Site related
 PAGE_DESCRIPTION = '<your description>'
 USER = {'<user_name>': '<user_password>'}
+
+USERS_BASE_TPL = 'admin/barfooz.de'

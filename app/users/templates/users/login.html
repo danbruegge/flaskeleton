@@ -1,0 +1,45 @@
+{% extends config.USERS_BASE_TPL %}
+
+{% block content %}
+<form method="POST" action="">
+
+    <fieldset><legend>Admin Login</legend>
+    {{ form.csrf_token }}
+
+    {% for field in form %}
+        {% if field.errors %}
+        <dl>
+
+            <dt class="error-color">Error:</dt>
+
+            <dd class="error-color">
+                <ul class="error-msg">
+                {% for error in field.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+                </ul>
+            </dd>
+
+        </dl>
+        {% endif %}
+
+        <div class="form-row">
+
+            <p {% if field.errors %} class="form-error"{% endif %}>
+                {% if field.id not in ['csrf_token', 'submit'] %}
+                    {{ field.label }}:<br />
+                {% endif %}
+                {{ field }}
+            </p>
+
+        </div>
+
+    {% endfor %}
+    </fieldset>
+
+    <p>
+        <input type="submit" value="Login" class="button" />
+    </p>
+
+</form>
+{% endblock %}

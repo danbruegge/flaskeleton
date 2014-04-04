@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from flask import Blueprint, abort, render_template, current_app
 from jinja2 import TemplateNotFound
+from flask.ext.login import login_required
 
 bp = Blueprint(
     'simplepages',
@@ -12,6 +13,7 @@ bp = Blueprint(
 
 @bp.route('/', defaults={'slug': 'default'})
 @bp.route('/<slug>')
+@login_required
 def show(slug):
     try:
         return render_template('simplepages/{0}.html'.format(slug))

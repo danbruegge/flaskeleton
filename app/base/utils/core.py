@@ -22,6 +22,12 @@ def load_blueprints(app, blueprint_config='BLUEPRINTS',
         )
         app.register_blueprint(bp)
 
+        # load a settings file for the blueprint
+        try:
+            app.config.from_pyfile('{0}/settings.py'.format(name))
+        except IOError:
+            pass
+
         # try:
             # admin = import_string(
                 # '{0}.{1}.{2}'.format(blueprint_path, name, 'admin')
