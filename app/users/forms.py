@@ -34,5 +34,3 @@ class LoginForm(Form):
 
         if not password == user.get_password():
             raise ValidationError('Incorrect password')
-
-        current_app.config['CURRENT_USER'] = user

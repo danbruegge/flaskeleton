@@ -16,9 +16,12 @@ bp = Blueprint(
 
 
 @login_manager.user_loader
-def load_user(user):
+def load_user(user_id):
+    users = current_app.config['USERS']
     try:
-        return current_app.config['USERS'][user]
+        for username in users:
+            if user_id == users[username].get_id():
+                return users[username]
     except KeyError:
         return None
 
@@ -28,9 +31,10 @@ def login():
     form = LoginForm()
 
     if form.validate_on_submit():
-        login_user(current_app.config['CURRENT_USER'])
+        login_user(current_app.config['USERS'][form.username.data])
 
-        return redirect(request.args.get('next') or url_for('index'))
+        return (redirect(request.args.get('next')
+                or url_for(current_app.config['USERS_REDIRECT_LOGIN'])))
 
     return render_template('users/login.html', form=form)
 
@@ -40,4 +44,4 @@ def login():
 def logout():
     logout_user()
 
-    return redirect(url_for('admin.index'))
+    return redirect(url_for(current_app.config['USERS_REDIRECT_LOGOUT']))
