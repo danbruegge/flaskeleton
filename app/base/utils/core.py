@@ -22,14 +22,6 @@ def load_blueprints(app, blueprint_config='BLUEPRINTS',
         )
         app.register_blueprint(bp)
 
-        # load a settings file for the blueprint
-        try:
-            app.config.from_pyfile('{0}/settings.py'.format(name))
-        except IOError:
-            # no need to log some errors, because it is not life safing here
-            # and it will spam the log files...
-            pass
-
         # try:
             # admin = import_string(
                 # '{0}.{1}.{2}'.format(blueprint_path, name, 'admin')
@@ -39,6 +31,23 @@ def load_blueprints(app, blueprint_config='BLUEPRINTS',
             # print '%s has no admin blueprint.' % name
 
     return app
+
+
+def load_blueprint_settings(app, blueprint_config='BLUEPRINTS',
+                            blueprint_path='app', blueprint_name='bp'):
+    """A simple blueprint settings loader, you only need to pass the app 
+    context and set a BLUEPRINTS constant with the a list of bluleprint names 
+    in the settings.py::
+
+        BLUEPRINTS = ('blueprint1', 'blueprint2', )
+    """
+
+    for name in app.config[blueprint_config]:
+        # load a settings file for the blueprint
+        app.config.from_pyfile('{0}/settings.py'.format(name), silent=True)
+
+    return app
+
 
 
 def error_handler(app):
