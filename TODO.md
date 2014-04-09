@@ -1,11 +1,10 @@
 TODO
 ====
 * better default style with purecss?
-* better integration of the users app, rethink some parts
-* backend
-  * user login, done with the users app?!
-  * user management
+* users app
   * user roles
+  * user management
+* simplepages app
   * content management
 
 
