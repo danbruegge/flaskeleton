@@ -3,7 +3,8 @@ from flask import (Flask, g, request, send_file, send_from_directory,
                    render_template)
 from flask.ext.assets import Environment
 from flask.ext.login import LoginManager, current_user
-from base.utils.core import load_blueprints, error_handler
+from base.utils.core import (load_blueprint_settings, load_blueprints,
+                             error_handler)
 
 
 assets = Environment()
@@ -12,6 +13,14 @@ login_manager = LoginManager()
 
 def create_app(settings):
     app = Flask(__name__)
+
+    # load base settings at first
+    app.config.from_pyfile('settings.py')
+
+    # simple load all blueprint settings, enabled in settings
+    load_blueprint_settings(app)
+
+    # load development or production settings at last
     app.config.from_pyfile(settings)
 
     # Setup assets
