@@ -14,7 +14,7 @@ bp = Blueprint(
 @bp.route('/', defaults={'slug': 'default'})
 @bp.route('/<slug>')
 @login_required
-def show(slug):
+def index(slug):
     try:
         return render_template('simplepages/{0}.html'.format(slug))
     except TemplateNotFound, e:
