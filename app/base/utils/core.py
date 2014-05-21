@@ -12,8 +12,6 @@ def load_blueprints(app, blueprint_config='BLUEPRINTS',
     settings.py::
 
         BLUEPRINTS = ('blueprint1', 'blueprint2', )
-
-    TODO: fix the admin stuff
     """
 
     for name in app.config[blueprint_config]:
@@ -21,14 +19,6 @@ def load_blueprints(app, blueprint_config='BLUEPRINTS',
             '{0}.{1}.{2}'.format(blueprint_path, name, blueprint_name)
         )
         app.register_blueprint(bp)
-
-        # try:
-            # admin = import_string(
-                # '{0}.{1}.{2}'.format(blueprint_path, name, 'admin')
-            # )
-            # app.register_blueprint(admin)
-        # except ImportStringError:
-            # print '%s has no admin blueprint.' % name
 
     return app
 
