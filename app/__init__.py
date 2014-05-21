@@ -2,13 +2,12 @@
 from flask import (Flask, g, request, send_file, send_from_directory,
                    render_template)
 from flask.ext.assets import Environment
-from flask.ext.login import LoginManager, current_user
+from flask.ext.login import current_user
 from base.utils.core import (load_blueprint_settings, load_blueprints,
                              error_handler)
 
 
 assets = Environment()
-login_manager = LoginManager()
 
 
 def create_app(settings):
@@ -26,9 +25,8 @@ def create_app(settings):
     # Setup assets
     assets.init_app(app)
 
-    # Setup LoginManager
-    login_manager.init_app(app)
-    login_manager.login_view = 'users.login'
+    # simple load all blueprints, enabled in settings
+    load_blueprints(app)
 
     # Enable DebugToolbar on debug
     # Enable error handler on productive mode
@@ -38,9 +36,6 @@ def create_app(settings):
     else:
         # add errorhandler
         error_handler(app)
-
-    # simple load all blueprints, enabled in settings
-    load_blueprints(app)
 
     @app.before_request
     def before_request():

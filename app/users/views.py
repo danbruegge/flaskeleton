@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 from flask import (Blueprint, request, redirect, url_for, render_template,
                    current_app)
-from flask.ext.login import login_user, logout_user, login_required
+from flask.ext.login import (LoginManager, login_user, logout_user,
+                             login_required)
 
-from app import login_manager
 from app.users.forms import LoginForm
 
 
@@ -13,6 +13,15 @@ bp = Blueprint(
     url_prefix='/users',
     template_folder='templates/'
 )
+
+login_manager = LoginManager()
+
+
+@bp.record_once
+def on_load(state):
+    # Setup LoginManager
+    login_manager.init_app(state.app)
+    login_manager.login_view = 'users.login'
 
 
 @login_manager.user_loader
