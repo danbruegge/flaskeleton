@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from werkzeug.securityy import generate_password_hash, check_password_hash
+from werkzeug.securit import generate_password_hash, check_password_hash
 from flask.ext.login import UserMixin, make_secure_token
 
 
