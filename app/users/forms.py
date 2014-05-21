@@ -28,9 +28,7 @@ class LoginForm(Form):
         if form.username.errors:
             return False
 
-        username = form.username.data
-        password = sha512(field.data)
-        user = current_app.config['USERS'][username]
+        user = current_app.config['USERS'][form.username.data]
 
-        if not password == user.get_password():
+        if user.check_password(field.data):
             raise ValidationError('Incorrect password')
