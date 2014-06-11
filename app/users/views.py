@@ -10,7 +10,6 @@ from app.users.forms import LoginForm
 bp = Blueprint(
     'users',
     __name__,
-    url_prefix='/users',
     template_folder='templates/'
 )
 

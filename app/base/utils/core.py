@@ -18,7 +18,7 @@ def load_blueprints(app, blueprint_config='BLUEPRINTS',
         bp = import_string(
             '{0}.{1}.{2}'.format(blueprint_path, name, blueprint_name)
         )
-        app.register_blueprint(bp)
+        app.register_blueprint(bp, url_prefix=app.config[name.upper() + '_URL_PREFIX'])
 
     return app
 

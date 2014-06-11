@@ -2,6 +2,7 @@
 from app.users.models import User
 
 
+USERS_URL_PREFIX = '/users'
 USERS_BASE_TPL = 'base.html'
 
 # TODO: this dict should be redundant if the users app will use a database
