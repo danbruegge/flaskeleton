@@ -1,11 +1,8 @@
 # -*- coding: utf-8 -*-
 from flask import current_app
-from flask.ext.login import login_user
 from flask.ext.wtf import Form
 from wtforms import TextField, PasswordField
 from wtforms.validators import ValidationError, DataRequired, Length
-
-from app.users.utils import sha512
 
 
 class LoginForm(Form):
