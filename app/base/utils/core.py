@@ -18,15 +18,18 @@ def load_blueprints(app, blueprint_config='BLUEPRINTS',
         bp = import_string(
             '{0}.{1}.{2}'.format(blueprint_path, name, blueprint_name)
         )
-        app.register_blueprint(bp, url_prefix=app.config[name.upper() + '_URL_PREFIX'])
+        app.register_blueprint(
+            bp,
+            url_prefix=app.config[name.upper() + '_URL_PREFIX']
+        )
 
     return app
 
 
 def load_blueprint_settings(app, blueprint_config='BLUEPRINTS',
                             blueprint_path='app', blueprint_name='bp'):
-    """A simple blueprint settings loader, you only need to pass the app 
-    context and set a BLUEPRINTS constant with the a list of bluleprint names 
+    """A simple blueprint settings loader, you only need to pass the app
+    context and set a BLUEPRINTS constant with the a list of bluleprint names
     in the settings.py::
 
         BLUEPRINTS = ('blueprint1', 'blueprint2', )
@@ -37,7 +40,6 @@ def load_blueprint_settings(app, blueprint_config='BLUEPRINTS',
         app.config.from_pyfile('{0}/settings.py'.format(name), silent=True)
 
     return app
-
 
 
 def error_handler(app):

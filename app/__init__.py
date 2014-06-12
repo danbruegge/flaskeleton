@@ -5,6 +5,7 @@ from flask.ext.assets import Environment
 from flask.ext.login import current_user
 from base.utils.core import (load_blueprint_settings, load_blueprints,
                              error_handler)
+from base.utils.template import load_context_processors
 
 
 assets = Environment()
@@ -27,6 +28,9 @@ def create_app(settings):
 
     # simple load all blueprints, enabled in settings
     load_blueprints(app)
+
+    # load all context_processors from utils.template
+    load_context_processors(app)
 
     # Enable DebugToolbar on debug
     # Enable error handler on productive mode
