@@ -14,6 +14,10 @@ assets = Environment()
 def create_app(settings):
     app = Flask(__name__)
 
+    # jinja settings
+    app.jinja_env.trim_blocks = True
+    app.jinja_env.lstrip_blocks = True
+
     # load base settings at first
     app.config.from_pyfile('settings.py')
 
