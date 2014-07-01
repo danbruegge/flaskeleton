@@ -8,8 +8,7 @@ flask driven webpages.
 
 STATIC FOLDER STRUCTURE
 -----------------------
-/static
-    /CACHE      - cache...
-    /base       - common non project stuff (js libs, css/less or images)
-    /project    - project related statis stuff
-
+ * /static
+    * /CACHE      - cache...
+    * /base       - common non project stuff (js libs, css/less or images)
+    * /project    - project related statis stuff
