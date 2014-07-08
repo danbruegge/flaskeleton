@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
-from flask import Blueprint, abort, render_template, current_app
+from flask import Blueprint, abort, render_template
+from flask import current_app as app
 from jinja2 import TemplateNotFound
-from flask.ext.login import login_required
+from flask.ext.login import current_user
 
 bp = Blueprint(
     'simplepages',
@@ -13,10 +14,13 @@ bp = Blueprint(
 
 @bp.route('/', defaults={'slug': 'default'})
 @bp.route('/<slug>')
-@login_required
 def index(slug):
+    page_login_required = slug in app.config['SIMPLEPAGES_LOGIN_REQUIRED']
+    if not current_user.is_authenticated() and page_login_required:
+        return app.login_manager.unauthorized()
+
     try:
         return render_template('simplepages/{0}.html'.format(slug))
     except TemplateNotFound, e:
-        current_app.logger.error(e)
+        app.logger.error(e)
         abort(404)
