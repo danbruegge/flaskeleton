@@ -16,7 +16,8 @@ bp = Blueprint(
 @bp.route('/<slug>')
 def index(slug):
     page_login_required = slug in app.config['SIMPLEPAGES_LOGIN_REQUIRED']
-    if not current_user.is_authenticated() and page_login_required:
+    auth = not current_user.is_authenticated() 
+    if auth and page_login_required:
         return app.login_manager.unauthorized()
 
     try:

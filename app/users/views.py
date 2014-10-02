@@ -34,7 +34,7 @@ def load_user(user_id):
         return None
 
 
-@bp.route('', methods=['GET', 'POST'])
+@bp.route('/', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
 
